@@ -15,14 +15,7 @@ public:
                 c[i]+=c[i+1];
         }
         reverse(c.begin(),c.end());
-        for(int i=0;i<=n;i++)
-            cout<<c[i]<<" ";
-        cout<<endl;
-        for(int i=0;i<=n;i++)
-            cout<<b[i]<<" ";
-        cout<<endl;
         int ans=max(b[k],c[k]);
-        cout<<ans<<" \n";
         for(int i=0;i<=k;i++)
         {
             ans=max(ans,b[i]+c[k-i]);
