@@ -9,9 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+    vector<int>mp(101,-1);
 class Solution {
 public:
-        map<int,int>mp;
     void travel(TreeNode* root,int height)
     {
         if(root==nullptr)
@@ -21,12 +21,13 @@ public:
         travel(root->right,height+1);
     }
     vector<int> rightSideView(TreeNode* root) {
-        mp.clear();
+        for(int &i:mp)
+            i=-1;
         travel(root,0);
         vector<int>ans;
-        
         for(auto i:mp)
-            ans.push_back(i.second);
+            if(i!=-1)
+                ans.push_back(i);
         return ans;
     }
 };
