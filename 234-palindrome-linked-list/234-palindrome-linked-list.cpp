@@ -41,7 +41,6 @@ public:
         tail=nhead;
         while(fast and tail)
         {
-            // cout<<fast->val<<" "<<tail->val<<" ";
             if(fast->val != tail->val)
                 return false;
             fast=fast->next;
