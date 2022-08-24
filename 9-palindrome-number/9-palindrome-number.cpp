@@ -1,12 +1,16 @@
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        string num=to_string(x);
-        for(int i=0;i<num.length()/2;i++)
+    bool isPalindrome(long long x) {
+        if(x<0)
+            return false;
+        long long temp=x;
+        long long news=0;
+        while(temp)
         {
-            if(num[i]!=num[num.length()-1-i])
-                return false;
+            news*=10;
+            news+=temp%10;
+            temp/=10;
         }
-        return true;
+        return x==news;
     }
 };
