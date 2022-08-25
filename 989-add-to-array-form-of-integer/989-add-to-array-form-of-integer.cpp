@@ -3,7 +3,7 @@ public:
     vector<int> addToArrayForm(vector<int>& num, int k) {
         int carry=0;
         reverse(num.begin(),num.end());
-        for(auto &i:num)
+        for(int &i:num)
         {
             
             int ne=(i+k%10+carry)%10;
