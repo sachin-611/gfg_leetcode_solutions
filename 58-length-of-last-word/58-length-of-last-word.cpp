@@ -9,7 +9,6 @@ public:
             while(i<n and s[i]!=' ')i++,cur++;
             if(cur)
                 last=cur;
-            // cout<<i<<" "<<cur<<" "<<last<<endl;
         }
         return last;
     }
