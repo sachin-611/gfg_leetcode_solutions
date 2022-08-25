@@ -2,7 +2,20 @@ class Solution {
 public:
     void add(string &a,string &b)
     {
-        
+        if(a.length()<b.length())
+            swap(a,b);
+        bool carry=0;
+        for(int i=0;i<a.length();i++)
+        {
+            a[i]=(a[i]-'0')+carry;
+            if(i<b.length())
+                a[i]+=(b[i]-'0');
+            carry=a[i]/10;
+            a[i]%=10;
+            a[i]+='0';
+        }
+        if(carry)
+            a.push_back(carry+'0');
     }
     string multiply(string num1, string num2) {
         string res="";
@@ -28,20 +41,7 @@ public:
             {
                 temp.push_back('0'+carry);
             }
-            if(res.length()<temp.length())
-            swap(res,temp);
-        carry=0;
-        for(int i=0;i<res.length();i++)
-        {
-            res[i]=(res[i]-'0')+carry;
-            if(i<temp.length())
-                res[i]+=(temp[i]-'0');
-            carry=res[i]/10;
-            res[i]%=10;
-            res[i]+='0';
-        }
-        if(carry)
-            res.push_back(carry+'0');
+            add(res,temp);
             cnt++;
         }
         while(!res.empty())
