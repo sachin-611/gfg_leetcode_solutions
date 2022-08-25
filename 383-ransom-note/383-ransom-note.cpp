@@ -7,9 +7,9 @@ public:
         for(char &i:ransomNote)
         {
             if(arr[i-'a']==0)
-                return false;
+                return 0;
             --arr[i-'a'];
         }
-        return true;
+        return 1;
     }
 };
