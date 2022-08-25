@@ -42,9 +42,7 @@ public:
             {
                 temp.push_back('0'+carry);
             }
-            // cout<<temp<<" \n";
             add(res,temp);
-            // cout<<res<<"\n";
             cnt++;
         }
         while(!res.empty())
