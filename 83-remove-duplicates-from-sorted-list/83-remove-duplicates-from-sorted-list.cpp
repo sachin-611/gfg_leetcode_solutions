@@ -19,12 +19,10 @@ public:
                 if(temp->next->val==temp->val)
                 {
                     temp->next=temp->next->next;
+                    continue;
                 }
-                else
-                    temp=temp->next;
             }
-            else
-                temp=temp->next;
+            temp=temp->next;
         }
         return head;
     }
