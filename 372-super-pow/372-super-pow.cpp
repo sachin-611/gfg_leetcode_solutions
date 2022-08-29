@@ -4,7 +4,7 @@ public:
         int res=1;
         int sz=b.size();
         b.push_back(0);
-        // a=a%1337;
+        a=a%1337;
         reverse(b.begin(),b.end());
         while(sz>0)
         {
@@ -13,8 +13,6 @@ public:
                 res=(res*a)%1337;
             }
             a=(a*a)%1337;
-            //half
-            
             for(int i=sz;i>=1;i--)
             {
                 if(b[i]%2==0)
