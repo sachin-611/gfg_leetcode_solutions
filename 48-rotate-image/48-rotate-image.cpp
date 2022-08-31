@@ -5,17 +5,15 @@ public:
         int n=matrix.size(),m=matrix[0].size();
         for(int i=0;i<n;i++)
         {
-            for(int j=0;j<m;j++)
+            for(int j=0;j<=i;j++)
             {
-                v[j][n-1-i]=matrix[i][j];
+                swap(matrix[i][j],matrix[j][i]);
             }
         }
+        
         for(int i=0;i<n;i++)
         {
-            for(int j=0;j<m;j++)
-            {
-                matrix[i][j]=v[i][j];
-            }
+            reverse(matrix[i].begin(),matrix[i].end());
         }
     }
 };
