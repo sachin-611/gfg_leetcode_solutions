@@ -8,16 +8,6 @@ public:
             res.insert(stoi(s));
             return;
         }
-        // for(int i=0;i<10;i++)
-        // {
-        //     if(s.empty())
-        //     {
-        //         s.push_back('0'+i);
-        //         gen(n,k,s);
-        //         s.pop_back();
-        //     }
-        //     else
-        //     {
                 int c=s[s.length()-1]-'0';
                 if(c+k<=9)
                 {
@@ -35,8 +25,6 @@ public:
                     s.pop_back();
                     c+=k;
                 }
-        //     }
-        // }
     }
     vector<int> numsSameConsecDiff(int n, int k) {
         res.clear();
