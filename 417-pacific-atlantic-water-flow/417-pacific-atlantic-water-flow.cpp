@@ -1,52 +1,71 @@
-#define vvi vector<vector<int>>
-#define vvb vector<vector<bool>>
-#define vb vector<bool>
-
+        vector<vector<int>>res,
+        po(201,vector<int>(201)),
+        vis(201,vector<int>(201));
 class Solution {
 public:
-	int n, m;
-
-	// Go througout the adjacent if the adjacent's height is more or equal to current height
-	void dfs(vvi& grid, vvb& flag, int x, int y) {
-		flag[x][y] = true;
-		if (x - 1 >= 0 && !flag[x - 1][y] && grid[x - 1][y] >= grid[x][y])
-			dfs(grid, flag, x - 1, y);
-		if (x + 1 < n && !flag[x + 1][y] && grid[x + 1][y] >= grid[x][y])
-			dfs(grid, flag, x + 1, y);
-		if (y - 1 >= 0 && !flag[x][y - 1] && grid[x][y - 1] >= grid[x][y])
-			dfs(grid, flag, x, y - 1);
-		if (y + 1 < m && !flag[x][y + 1] && grid[x][y + 1] >= grid[x][y])
-			dfs(grid, flag, x, y + 1);
-	}
-
-	vvi pacificAtlantic(vvi& heights) {
-		n = heights.size();
-		m = heights[0].size();
-
-		vvb flag1(n, vb(m)), flag2(n, vb(m));
-		vvi ans;
-
-		// Pacific
-		// Do DFS starting from upper border and left border
-		// Mark true in flag1 if posibble
-		for (int i = 0; i < n; i++)
-			dfs(heights, flag1, i, 0);
-		for (int i = 1; i < m; i++)
-			dfs(heights, flag1, 0, i);
-
-		// Attlantic
-		// DFS starting from bottom border and right border
-		// Mark true in flag2 if posibble
-		for (int i = 0; i < n; i++)
-			dfs(heights, flag2, i, m - 1);
-		for (int i = 0; i < m - 1; i++)
-			dfs(heights, flag2, n - 1, i);
-
-		// Add cordinate to ans if both flag1 and flag2 is equal to true
-		for (int i = 0; i < n; i++) for (int j = 0; j < m; j++)
-			if (flag1[i][j] && flag2[i][j])
-				ans.push_back({i, j});
-
-		return ans;
-	}
+    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
+        int n=heights.size(),m=heights[0].size();
+        res.clear();
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
+                po[i][j]=vis[i][j]=0;
+        for(int i=0;i<n;i++)
+        {
+            if(vis[i][0]==0)
+            {
+                dfs(i,0,heights);
+            }
+        }
+        for(int i=0;i<m;i++)
+        {
+            if(vis[0][i]==0)
+            {
+                dfs(0,i,heights);
+            }
+        }
+        for(int i=0;i<n;i++)
+            for(int j=0;j<m;j++)
+                vis[i][j]=0;
+        for(int i=0;i<n;i++)
+        {
+            if(vis[i][m-1]==0)
+            {
+                dfs(i,m-1,heights);
+            }
+        }
+        for(int i=0;i<m;i++)
+        {
+            if(vis[n-1][i]==0)
+            {
+                dfs(n-1,i,heights);
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(po[i][j]==2)
+                    res.push_back({i,j});
+            }
+        }
+        // debug(po);
+        return res;
+    }
+    void dfs(int f,int s,vector<vector<int>>&heights)
+    {
+        (po[f][s]==0?po[f][s]=1:po[f][s]=2);
+        vis[f][s]=1;
+        if(s+1<heights[0].size() and vis[f][s+1]==0 and heights[f][s]<=heights[f][s+1]){
+                        dfs(f,s+1,heights);
+        }
+        if(s-1>=0 and vis[f][s-1]==0 and heights[f][s]<=heights[f][s-1]){
+                        dfs(f,s-1,heights);
+        }
+        if(f-1>=0 and vis[f-1][s]==0 and heights[f][s]<=heights[f-1][s]){
+                        dfs(f-1,s,heights);
+        }
+        if(f+1<heights.size() and vis[f+1][s]==0 and heights[f][s]<=heights[f+1][s]){
+                        dfs(f+1,s,heights);
+        }
+    }
 };
