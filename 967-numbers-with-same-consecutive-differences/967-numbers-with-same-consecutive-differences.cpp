@@ -1,6 +1,6 @@
 class Solution {
 public:
-    unordered_set<int>res;
+    set<int>res;
     void gen(int n,int k,string s)
     {
         if(s.length()==n)
