@@ -2,9 +2,9 @@
 class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        a.clear();
         sort(arr.begin(),arr.end());
         int minis=arr[1]-arr[0];
-        a.clear();
         for(int i=1;i<arr.size();i++)
         {minis=min(minis,arr[i]-arr[i-1]);}
         for(int i=1;i<arr.size();i++)
