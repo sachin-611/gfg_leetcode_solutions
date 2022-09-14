@@ -9,12 +9,10 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+    map<int,int>m;
 class Solution {
 public:
-    map<int,int>m;
     int pseudoPalindromicPaths (TreeNode* root,int cnt=0) {
-        // if(i==0)
-        //     m.clear();
         if(root==nullptr)
             return 0;
         if(m[root->val]%2==0)
