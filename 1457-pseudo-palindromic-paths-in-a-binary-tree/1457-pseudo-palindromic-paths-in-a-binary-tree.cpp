@@ -12,9 +12,9 @@
 class Solution {
 public:
     map<int,int>m;
-    int pseudoPalindromicPaths (TreeNode* root,int i=0,int cnt=0) {
-        if(i==0)
-            m.clear();
+    int pseudoPalindromicPaths (TreeNode* root,int cnt=0) {
+        // if(i==0)
+        //     m.clear();
         if(root==nullptr)
             return 0;
         if(m[root->val]%2==0)
@@ -25,12 +25,12 @@ public:
         int left=0;
         if(root->left)
         {
-            left=pseudoPalindromicPaths(root->left,i+1,cnt);
+            left=pseudoPalindromicPaths(root->left,cnt);
         }
         int right=0;
         if(root->right)
         {
-            right=pseudoPalindromicPaths(root->right,i+1,cnt);
+            right=pseudoPalindromicPaths(root->right,cnt);
         }
         if(root->left==nullptr and root->right==nullptr and cnt<=1)
             left++;
