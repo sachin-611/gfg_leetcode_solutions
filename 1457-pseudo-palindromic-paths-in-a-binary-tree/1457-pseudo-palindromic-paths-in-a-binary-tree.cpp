@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-unordered_map<int,int>m;
+map<int,int>m;
 class Solution {
 public:
     int pseudoPalindromicPaths (TreeNode* root,int i=0,int cnt=0) {
