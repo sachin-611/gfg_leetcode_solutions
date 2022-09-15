@@ -14,6 +14,8 @@ public:
                 m[i*2]--;
                 res.push_back(i);
             }
+            // else
+            //     return {};
         }
         if(res.size()*2==changed.size())
             return res;
