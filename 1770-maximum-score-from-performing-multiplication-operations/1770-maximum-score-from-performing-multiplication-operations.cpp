@@ -3,7 +3,7 @@ class Solution {
 public:
     vector<vector<int>> dp;
     
-    int solve(int i, int j, vector<int> &a, vector<int> &b){
+    int solve(int i, int j, int k, vector<int> &a, vector<int> &b){
 //         if (j == M.size()) return 0;
 //         if (dp[i][j] != INT_MIN) return dp[i][j];
 //         // Left Side
@@ -13,8 +13,8 @@ public:
 //         return dp[i][j] = max(left, right);
         if(j==b.size())return 0;
         if(dp[i][j]!=INT_MIN)return dp[i][j];
-        int val1=solve(i+1,j+1,a,b)+b[j]*a[i];
-        int val2=solve(i,j+1,a,b)+b[j]*a[a.size()-1-(j-i)];
+        int val1=solve(i+1,j+1,k,a,b)+b[j]*a[i];
+        int val2=solve(i,j+1,k+1,a,b)+b[j]*a[a.size()-1-k];
         return dp[i][j]=max(val1,val2);
     }
     
@@ -25,6 +25,6 @@ public:
 //     }
     int maximumScore(vector<int>& a, vector<int>& b) {
         dp.resize(b.size() + 1, vector<int>(b.size() + 1, INT_MIN));
-        return solve(0,0,a,b);
+        return solve(0,0,0,a,b);
     }
 };
