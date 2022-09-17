@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool check(string s1)
+    bool check(string &s1)
     {
         int i=0;int j=s1.size()-1;
         while(i<j)
