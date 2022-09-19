@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<string>> findDuplicate(vector<string>& paths) {
-        map<string,vector<string>>m;
+        unordered_map<string,vector<string>>m;
         for(auto i :paths)
         {
             stringstream ss(i);
