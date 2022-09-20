@@ -12,7 +12,10 @@ public:
         {
             for(int j=1;j<=m;j++)
             {
-                dp[i][j]=(nums1[i-1]==nums2[j-1]?(dp[i-1][j-1])+1:0);
+                if(nums1[i-1]==nums2[j-1])
+                    dp[i][j]=dp[i-1][j-1]+1;
+                else
+                    dp[i][j]=0;
                 if(dp[i][j]>res)
                     res=dp[i][j];
             }
