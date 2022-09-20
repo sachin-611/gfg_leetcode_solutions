@@ -1,9 +1,8 @@
+        vector<vector<int>>dp(1001,vector<int>(1001));
 class Solution {
 public:
-        vector<vector<int>>dp;
     int findLength(vector<int>& nums1, vector<int>& nums2) {
         int n=nums1.size(),m=nums2.size();
-        dp.resize(n+1,vector<int>(m+1));
         int res=0;
         for(int i=1;i<=n;i++)
         {
