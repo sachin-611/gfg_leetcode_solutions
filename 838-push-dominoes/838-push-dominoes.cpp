@@ -1,32 +1,38 @@
 class Solution {
 public:
     string pushDominoes(string s) {
-    int N = s.size(), right = -1;
-    for (int i = 0; i < N; ++i) {
-        if (s[i] == 'L') {
-            if (right == -1) { 
-                // Step 2
-                for (int j = i - 1; j >= 0 && s[j] == '.'; --j) {
-                  s[j] = 'L';  
-                } 
-            } else {
-                // Step 8
-                for (int j = right + 1, k = i - 1; j < k; ++j, --k) {
-                    s[j] = 'R';
-                    s[k] = 'L';
-                } 
-                right = -1;
-            }
-        } else if (s[i] == 'R') {
-            if (right != -1) {
-                for (int j = right + 1; j < i; ++j) s[j] = 'R';
-            }
-            right = i;
+        vector<int> force(s.size());
+        int va=0;
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='R')
+                va=s.size();
+            else if(s[i]=='L')
+                va=0;
+            else
+                va=max(0,va-1);
+            force[i]=va;
         }
+        va=0;
+        for(int i=s.size()-1;i>=0;i--)
+        {
+            if(s[i]=='L')
+                va=s.size();
+            else if(s[i]=='R')
+                va=0;
+            else
+                va=max(va-1,0);
+            force[i]-=va;
+        }
+        for(int i=0;i<s.size();i++)
+        {
+            if(force[i]>0)
+                s[i]='R';
+            else if(force[i]<0)
+                s[i]='L';
+            else
+                s[i]='.';
+        }
+        return s;
     }
-    if (right != -1) {
-        for (int j = right + 1; j < N; ++j) s[j] = 'R';
-    }
-    return s;
-}
 };
