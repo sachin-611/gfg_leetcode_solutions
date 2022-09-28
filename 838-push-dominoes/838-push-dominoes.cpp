@@ -1,7 +1,7 @@
+int force[100001];
 class Solution {
 public:
     string pushDominoes(string s) {
-        vector<int> force(s.size());
         int va=0;
         for(int i=0;i<s.size();i++)
         {
