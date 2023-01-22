@@ -16,10 +16,6 @@ public:
     void cal(string s,string temp,int i,int n,vector<string>&tem){
         if(i==n)
         {
-            // cout<<temp<<endl;
-            // for(auto i:tem)
-            //     cout<<i<<" ";
-            // cout<<endl;
             if(isPal(temp)||temp=="")
             {
                 if(temp!="")
