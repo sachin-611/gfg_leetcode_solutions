@@ -1,8 +1,7 @@
 class Solution {
-public:
     vector<vector<int>>pos;
     vector<vector<int>>m;
-    void bfs(int node,int i,int n)
+    void bfs(int &node,int i,int &n)
     {
         queue<pair<int,int>>q;
         q.push({node,0});
@@ -23,6 +22,7 @@ public:
                 }
         }
     }
+public:
     
     int closestMeetingNode(vector<int>& edges, int node1, int node2) {
         int n=edges.size();
