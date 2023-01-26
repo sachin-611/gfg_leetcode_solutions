@@ -23,7 +23,6 @@ class Solution {
         }
     }
 public:
-    
     int closestMeetingNode(vector<int>& edges, int node1, int node2) {
         int n=edges.size();
         m.resize(n);
