@@ -12,16 +12,10 @@ public:
     
     void addNum(int value) {
         if(useds[value]==1){
-            // for(int i:useds)
-            //     cout<<i<<" ";
-            // cout<<endl;
-            cout<<value<<endl;
             return;
         }
-        cout<<"ok: "<<value<<endl;
         useds[value]=1;
         if(value-1>=0 and !get_start[value-1].empty() and !get_end[value+1].empty()){
-            cout<<"two"<<endl;
             int p=get_start[value-1][0];
             int q=get_end[value+1][0];
             ok.erase(ok.find({p,value-1}));
@@ -36,7 +30,6 @@ public:
             return;
         }
         if(value-1>=0 and !get_start[value-1].empty()){
-            cout<<"Left"<<endl;
             int a=get_start[value-1][0];
             int b=get_end[a][0];
             ok.erase(ok.find({a,b}));
@@ -47,7 +40,6 @@ public:
             return;
         }
         if(!get_end[value+1].empty()){
-            cout<<"Right"<<endl;
             int a=value+1;
             int b=get_end[a][0];
             ok.erase(ok.find({a,b}));
@@ -60,17 +52,13 @@ public:
         ok.insert({value,value});
         get_start[value].push_back(value);
         get_end[value].push_back(value);
-        cout<<value<<"ended"<<endl;
     }
     
     vector<vector<int>> getIntervals() {
-        cout<<"beg"<<endl;
         vector<vector<int>>res;
-        for(auto i:ok)
-        {
+        for(auto &i:ok){
             res.push_back({i.first,i.second});
         }
-        cout<<"end"<<endl;
         return res;
     }
 };
