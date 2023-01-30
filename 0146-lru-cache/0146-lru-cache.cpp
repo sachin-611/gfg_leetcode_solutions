@@ -46,27 +46,21 @@ public:
         temp=tail;
         while(temp){
             cout<<"{"<<temp->key<<":"<<temp->data<<"}, ";
-            // cout<<temp->key<<" ";
                 temp=temp->prev;
         ;}
         cout<<endl<<endl;;
     }
     int get(int key) {
         if(m.count(key)){
-            // cout<<"In get"<<endl;
-            // print(head);
             auto temp=m[key];
             remove(temp);
             insert_prev(temp,tail);
-            // print(head);
             return temp->data;
         }
         return -1;
     }
     
     void put(int key, int value) {
-        // cout<<"In put"<<endl;
-        // print(head);
         if(m.count(key)){
             auto ok=m[key];
             ok->data=value;
@@ -89,7 +83,6 @@ public:
             m[key]=temp;
             cnt++;
         }
-        // print(head);
     }
 };
 
