@@ -40,7 +40,7 @@ public:
     LFUCache(int capacity) {
         limit= capacity;
         cnt=0;
-        a.resize(5000);
+        a.resize(3000);
         m.clear();
         int oks=a.size();
         for(int i=1;i<oks;++i){
