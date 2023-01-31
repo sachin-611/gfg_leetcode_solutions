@@ -66,14 +66,13 @@ public:
         cnt=0;
         a.resize(100002);
         m.clear();
-        int oks=0;
-        for(auto &i:a){
-            i.first=new node;
-            i.second=new node;
-            (i.first)->next=(i.second);
-            (i.second)->prev=(i.first);
-            i.first->cnt=i.second->cnt=oks;
-            oks++;
+        int oks=a.size();
+        for(int i=1;i<oks;++i){
+            a[i].first=new node;
+            a[i].second=new node;
+            a[i].first->next=a[i].second;
+            a[i].second->prev=a[i].first;
+            a[i].first->cnt=a[i].second->cnt=i;
         }
         // dbg();
     }
