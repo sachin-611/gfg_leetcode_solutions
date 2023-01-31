@@ -13,7 +13,7 @@ class node{
 class LFUCache {
     int limit,cnt;
     vector<pair<node*,node*>>a;
-    map<int,node*>m;
+    unordered_map<int,node*>m;
     map<int,int>fre;
     void remove(node *cur){
         auto pre=cur->prev;
@@ -30,36 +30,12 @@ class LFUCache {
     }
     void decrease(int cnt1){
         auto temp=fre[cnt1];
-        // cout<<cnt1<<" "<<temp<<endl;
-        
         if(temp==1){
             fre.erase(cnt1);
         }else{
             fre[cnt1]--;
         }
     }
-    // void print(node *temp){
-    //     node *ok=temp;
-    //     while(ok){
-    //         cout<<"{"<<ok->key<<" "<<ok->value<<" "<<ok->cnt<<"}, ";
-    //         ok=ok->next;
-    //     }
-    //     cout<<endl;
-    // }
-    // void dbg(){
-    //     int oks=0;
-    //     for(auto i:a){
-    //         if(i.first->next==i.second)
-    //             continue;
-    //         print(i.first);
-    //         oks++;
-    //     }
-    //     cout<<endl<<"map:";
-    //     for(auto i:fre){
-    //         cout<<"{"<<i.first<<" "<<i.second<<"}, ";
-    //     }
-    //     cout<<endl<<endl;;
-    // }
 public:
     LFUCache(int capacity) {
         limit= capacity;
