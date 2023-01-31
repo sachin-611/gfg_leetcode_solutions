@@ -17,7 +17,7 @@ public:
     int bestTeamScore(vector<int>& scores, vector<int>& ages) {
         int n=ages.size();
         a.resize(n);
-        dp.resize(n+2,vector<int>(n+2,-1));
+        dp.resize(n,vector<int>(n+2,-1));
         for(int i=0;i<n;i++){
             a[i].first=ages[i];
             a[i].second=scores[i];
