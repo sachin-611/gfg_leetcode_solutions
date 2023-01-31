@@ -1,27 +1,28 @@
 class Solution {
     vector<pair<int,int>>a;
-    map<pair<int,int>,int>dp;
-    int cal(int n,int total,int last){
-        vector<int>dp(n+2);
-        for(int i=0;i<n;i++){
-            dp[i]=a[i].second;
-            for(int j=i-1;j>=0;j--){
-                if(a[i].second>=a[j].second){
-                    dp[i]=max(dp[i],dp[j]+a[i].second);
-                }
-            }
+    vector<vector<int>>dp;
+    int cal(int i,int total,int last){
+        if(i>=a.size())
+            return 0;
+        int &ans=dp[i][last+1];
+        if(ans!=-1)
+            return ans;
+        if(last==-1 || a[last].second<=a[i].second){
+            ans=cal(i+1,total+a[i].second,i)+a[i].second;
         }
-        return *max_element(dp.begin(),dp.end());
+        ans=max(ans,cal(i+1,total,last));
+        return ans;
     }
 public:
     int bestTeamScore(vector<int>& scores, vector<int>& ages) {
         int n=ages.size();
         a.resize(n);
+        dp.resize(n+2,vector<int>(n+2,-1));
         for(int i=0;i<n;i++){
             a[i].first=ages[i];
             a[i].second=scores[i];
         }
         sort(a.begin(),a.end());
-        return cal(n,0,0);
+        return cal(0,0,-1);
     }
 };
