@@ -9,9 +9,15 @@
  * };
  */
 class Solution {
-public:
-    ListNode* removeZeroSumSublists(ListNode* head) {
         unordered_map<int,ListNode*>m;
+public:
+    void print(){
+        for(auto i:m){
+            cout<<"{"<<i.first<<" "<<i.second->val<<"}"
+        ;}
+        cout<<endl;
+    }
+    ListNode* removeZeroSumSublists(ListNode* head) {
         int sum=0;
         auto temp=head;
         int cnt=0;
@@ -19,8 +25,21 @@ public:
             sum+=temp->val;
             if(sum==0){
                 head=temp->next;
+                m.clear();
             }
             else if(m.count(sum)){
+                auto rms=m[sum]->next;
+                int sms=sum;
+                bool beg=1;
+                // print();
+                while(sms!=sum or beg){
+                    beg=0;
+                    sms+=rms->val;
+                    if(sms!=sum)
+                    m.erase(sms);
+                    rms=rms->next;
+                }
+                // print();
                 m[sum]->next=temp->next;
                 cnt++;
             }
@@ -29,7 +48,21 @@ public:
             }
                 temp=temp->next;
         }
-        if(cnt==0)return head;
-        return removeZeroSumSublists(head);
+        temp=head;
+        auto prev=temp;
+        while(temp){
+            if(temp->val==0){
+                if(temp==head){
+                    head=temp->next;
+                }
+                else{
+                    prev->next=temp->next;
+                }
+            }
+            prev=temp;
+            temp=temp->next;
+        }
+        // cout<<endl;
+        return head;
     }
 };
