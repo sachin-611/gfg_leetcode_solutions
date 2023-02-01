@@ -4,10 +4,8 @@ class Solution {
         int mm1=(s1[3]-'0')*10+(s1[4]-'0');
         int hh2=(s2[0]-'0')*10+(s2[1]-'0');
         int mm2=(s2[3]-'0')*10+(s2[4]-'0');
-        // cout<<hh1<<":"<<mm1<<" "<<hh2<<":"<<mm2<<endl;
         if(hh1>hh2 or (hh1==hh2 and mm1>=mm2))
             return true;
-        // cout<<"false"<<endl;
         return false;
     }
 public:
