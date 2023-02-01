@@ -1,11 +1,11 @@
 class Solution {
-    bool check(string t,string tar){
+    bool check(string &t,string &tar){
         string s=t;
         while(s.length()<tar.length())s+=t;
         return s==tar;
     }
 public:
-    string gcdOfStrings(string str1, string str2) {
+    string gcdOfStrings(string &str1, string &str2) {
         if(str1.length()>str2.length())
             swap(str1,str2);
         string temp=str1;
