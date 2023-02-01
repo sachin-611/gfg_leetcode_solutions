@@ -11,7 +11,7 @@
 class Solution {
 public:
     vector<ListNode*> splitListToParts(ListNode* head, int k) {
-        vector<ListNode*>ok;
+        vector<ListNode*>ok(k);
         auto temp=head;
         int len=0;
         while(temp){len++;temp=temp->next;}
@@ -19,7 +19,7 @@ public:
         int carry=len%k;
         temp=head;
         for(int i=0;i<k;i++){
-            ok.push_back(temp);
+            ok[i]=temp;
             int cnts=cnt;
             auto prev=temp;
             while(temp and cnts){
