@@ -1,22 +1,23 @@
 class MyCalendar {
-    vector<vector<int>>ok;
+    map<int,int>ok;
 public:
     MyCalendar() {
         ok.clear();
     }
     
-    bool book(int start, int end) {
-        if(ok.empty()){
-            ok.push_back({start,end});
-            return true;
+    bool book(int c, int d) {
+        auto tem=ok.lower_bound(c);
+        if(tem!=ok.end()){
+            int a=tem->first,b=tem->second;
+            if(c<b and a<d)return false;
         }
-        for(auto i:ok){
-            int a=i[0],b=i[1],c=start,d=end;
-            if((c>=a and c<b) or (a>=c and a<d)){
-                return false;
-            }
-        }        
-        ok.push_back({start,end});
+        if(tem!=ok.begin())
+        {
+            tem--;
+             int a=tem->first,b=tem->second;
+            if(c<b and a<d)return false;
+        }
+        ok[c]=d;
         return true;
     }
 };
