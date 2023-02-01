@@ -6,15 +6,14 @@ class Solution {
     }
 public:
     string gcdOfStrings(string str1, string str2) {
-        string temp="";
-        string res="";
         if(str1.length()>str2.length())
             swap(str1,str2);
+        string temp=str1;
         for(int i=0;i<str1.size();i++){
-            temp.push_back(str1[i]);
             if(check(temp,str1)and check(temp,str2))
-                res=temp;
+                return temp;
+            temp.pop_back();
         }
-        return res;
+        return "";
     }
 };
