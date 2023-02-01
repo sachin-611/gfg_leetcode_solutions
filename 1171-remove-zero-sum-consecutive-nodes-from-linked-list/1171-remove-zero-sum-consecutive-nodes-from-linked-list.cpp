@@ -25,7 +25,7 @@ public:
                 cnt++;
             }
             else{
-                m[sum]=temp;
+                m[sum]=(temp);
             }
                 temp=temp->next;
         }
