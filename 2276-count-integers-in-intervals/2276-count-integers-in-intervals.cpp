@@ -1,41 +1,36 @@
 class CountIntervals {
-    map<int,int>m;
-    bool modified;
+    map<pair<int,int>,int>m;
     int ans;
 public:
     CountIntervals() {
         m.clear();
-        modified=false;
         ans=0;
     }
     
     void add(int left, int right) {
-        m[left]++;
-        m[right+1]--;
-        modified=1;
+        pair<int,int> cur={left,right};
+        auto it=m.lower_bound(cur);
+        if(it!=m.begin()){
+            auto pr=it;
+            pr--;
+            if(pr->first.second>=left)it=pr;
+        }
+        vector<pair<int,int>>todel;
+        while(it!=m.end()){
+            if(it->first.first>right)
+                break;
+            ans-=(it->first.second-it->first.first+1);
+            cur.first=min(cur.first,it->first.first);
+            cur.second=max(cur.second,it->first.second);
+            todel.push_back(it->first);
+            it++;
+        }
+        while(!todel.empty()){m.erase(todel.back());todel.pop_back();}
+        ans+=(cur.second-cur.first+1);
+        m[cur]++;
     }
     
     int count() {
-        if(modified){
-            int prev=0;
-            int total=0;
-            ans=0;
-            map<int,int>temp;
-            for(const auto &i:m){
-                if(total==0){
-                    temp[i.first]++;
-                    prev=i.first;
-                }
-                total+=i.second;
-                
-                if(total==0){
-                    temp[i.first]--;
-                    ans+=(i.first-prev);
-                }
-            }
-            m=temp;
-        }
-        modified=false;
         return ans;
     }
 };
