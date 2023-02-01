@@ -11,6 +11,6 @@ class Solution {
 public:
     bool haveConflict(vector<string>& event1, vector<string>& event2) {
         string s1=event1[0],e1=event1[1],s2=event2[0],e2=event2[1];
-        return (((comp(s1,s2) and comp(e2,s1))or((comp(s2,s1) and comp(e1,s2)))));
+        return (((comp(event1[0],event2[0]) and comp(event2[1],event1[0]))or((comp(event2[0],event1[0]) and comp(event1[1],event2[0])))));
     }
 };
