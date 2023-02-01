@@ -11,16 +11,16 @@
 class Solution {
     void add(ListNode **even_head,ListNode** temp,ListNode**etemp){
         if(!(*even_head)){
-                    *even_head=*temp;
-                    *etemp=*temp;
-                    *temp=(*temp)->next;
-                    (*etemp)->next=nullptr;
-                }else{
-                    (*etemp)->next=*temp;
-                    *temp=(*temp)->next;
-                    *etemp=(*etemp)->next;
-                    (*etemp)->next=nullptr;
-                }
+            *even_head=*temp;
+            *etemp=*temp;
+            *temp=(*temp)->next;
+            (*etemp)->next=nullptr;
+        }else{
+            (*etemp)->next=*temp;
+            *temp=(*temp)->next;
+            *etemp=(*etemp)->next;
+            (*etemp)->next=nullptr;
+        }
     }
 public:
     ListNode* oddEvenList(ListNode* head) {
