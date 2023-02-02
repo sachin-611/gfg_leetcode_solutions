@@ -1,9 +1,7 @@
 class Solution {
 public:
-    int countBinarySubstrings(string s) {
-        int prev=0;
-        int ans=0;
-        int i=0,n=s.length();
+    int countBinarySubstrings(string &s) {
+        int prev=0, ans=0,i=0,n=s.length();
         while(i<n){
             char c=s[i];
             int cnt=0;
