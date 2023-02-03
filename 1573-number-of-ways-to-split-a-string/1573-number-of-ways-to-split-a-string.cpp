@@ -31,12 +31,9 @@ public:
         
         int one=ones/3;
         long long ans=0;
-        for(int i=0;i<n;i++){
-            if(cnt[i]!=one)continue;
-            int temp1=(upper_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin());
-            int temp2=(lower_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin());
-            ans=((ans+(temp1-temp2)%mod)%mod+mod)%mod;
-        }
+        long long temp1=(upper_bound(cnt.begin(),cnt.end(),one)-cnt.begin())-(lower_bound(cnt.begin(),cnt.end(),one)-cnt.begin());
+        int temp2=(upper_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin())-(lower_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin());
+        ans=(((temp1%mod*temp2%mod)%mod)+mod)%mod;
         return ans;
     }
 };
