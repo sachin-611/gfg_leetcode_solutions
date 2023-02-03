@@ -6,7 +6,7 @@ class Solution {
         return 0;
     }
 public:
-    string maximumNumber(string num, vector<int>& change) {
+    string maximumNumber(string &num, const vector<int>& change) {
         int i=0,n=num.size();
         while(i<n){
             int chan=0;
