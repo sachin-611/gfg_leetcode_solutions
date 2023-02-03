@@ -28,8 +28,8 @@ public:
             }
         }
         string res="";
-        for(auto i:ok){
-            for(auto j:i)
+        for(auto &i:ok){
+            for(auto &j:i)
                 res.push_back(j);
         }
         return res;
