@@ -3,7 +3,7 @@ public:
     string convert(string &s, int numRows) {
         if(numRows==1)
             return s;
-        vector<string>ok(numRows);
+        vector<vector<char>>ok(numRows);
         int i=0;
         int next=0;
         int n=s.length();
@@ -29,7 +29,8 @@ public:
         }
         string res="";
         for(auto &i:ok){
-            res=res+i;
+            for(auto &j:i)
+                res.push_back(j);
         }
         return res;
     }
