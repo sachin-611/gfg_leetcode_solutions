@@ -10,14 +10,7 @@ public:
             }
         }
         if(ones==0){
-            int ans=0;
-            for(int i=1;i<n;i++){
-                int rem=n-i;
-                if(rem-1>0){
-                    ans+=rem-1;
-                    ans%=mod;
-                }
-            }
+            long long ans=(((long long)(n-1)*(n-2)/2)%mod+mod)%mod;
             return ans;
         }
         if(ones%3!=0){
