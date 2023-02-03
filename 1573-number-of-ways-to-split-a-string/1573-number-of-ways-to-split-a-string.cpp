@@ -36,7 +36,6 @@ public:
             int temp1=(upper_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin());
             int temp2=(lower_bound(cnt.begin(),cnt.end(),one*2)-cnt.begin());
             ans=((ans+(temp1-temp2)%mod)%mod+mod)%mod;
-            // cout<<i<<" "<<one<<" "<<cnt[i]<<" "<<temp1<<" "<<temp2<<endl;
         }
         return ans;
     }
