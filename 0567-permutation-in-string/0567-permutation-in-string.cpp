@@ -3,17 +3,17 @@ class Solution {
     bool check(){
         // return m1==m2;
         map<char,int>temp;
-        for(auto i:m1){
+        for(auto &i:m1){
             // cout<<"{"<<i.first<<" "<<i.second<<"} ";
             temp[i.first]=i.second;
         }
         // cout<<endl;
-        for(auto i:m2){
+        for(auto &i:m2){
             // cout<<"{"<<i.first<<" "<<i.second<<"} ";
             temp[i.first]-=i.second;
         }
         // cout<<endl;
-        for(auto i:temp){
+        for(auto &i:temp){
             if(i.second!=0)
                 return false;
         }
