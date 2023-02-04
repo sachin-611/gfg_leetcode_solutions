@@ -1,7 +1,7 @@
 class Solution {
     map<char,int>m1,m2;
     bool check(){
-        // return m1==m2;
+        return m1==m2;
         map<char,int>temp;
         for(auto &i:m1){
             // cout<<"{"<<i.first<<" "<<i.second<<"} ";
