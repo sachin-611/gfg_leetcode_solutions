@@ -1,18 +1,18 @@
 class Solution {
     map<char,int>m1,m2;
     bool check(){
-        return m1==m2;
+        // return m1==m2;
         map<char,int>temp;
         for(auto i:m1){
-            cout<<"{"<<i.first<<" "<<i.second<<"} ";
+            // cout<<"{"<<i.first<<" "<<i.second<<"} ";
             temp[i.first]=i.second;
         }
-        cout<<endl;
+        // cout<<endl;
         for(auto i:m2){
-            cout<<"{"<<i.first<<" "<<i.second<<"} ";
+            // cout<<"{"<<i.first<<" "<<i.second<<"} ";
             temp[i.first]-=i.second;
         }
-        cout<<endl;
+        // cout<<endl;
         for(auto i:temp){
             if(i.second!=0)
                 return false;
