@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> findAnagrams(string s, string p) {
+    vector<int> findAnagrams(string &s, string &p) {
         int m=s.size();
         int n=p.size();
         vector<int>cur(26),tar(26);
