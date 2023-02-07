@@ -13,8 +13,10 @@ public:
         for(int i=n;i<=m;i++){
             flag=1;
             for(int tem=0;tem<26;tem++){
-                if(cur[tem]!=tar[tem])
+                if(cur[tem]!=tar[tem]){
                     flag=0;
+                    break;
+                }
             }
             if(flag){
                 res.push_back(left);
