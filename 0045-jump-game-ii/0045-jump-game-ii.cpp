@@ -20,7 +20,6 @@ public:
                 if(cnts[j]!=0)
                     continue;
                 cnts[j]=jmp+1;
-                // cout<<j<<" "<<cnts[j]<<endl;
             }
         }
         return cnts[n-1];
