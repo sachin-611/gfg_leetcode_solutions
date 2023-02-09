@@ -3,7 +3,7 @@ public:
     long long distinctNames(vector<string>& ideas) {
         long long res=0;
         int n=ideas.size();
-        unordered_set<string>ne[26];
+        set<string>ne[26];
         for(int i=0;i<26;i++){
             ne[i].clear();
         }
@@ -13,7 +13,7 @@ public:
         for(int i=0;i<26;i++){
             for(int j=0;j<26;j++){
                 int cnt=0;
-                for(string str:ne[i]){
+                for(const string &str:ne[i]){
                     if(ne[j].count(str))
                         cnt++;
                 }
