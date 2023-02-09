@@ -2,7 +2,6 @@ class Solution {
 public:
     long long distinctNames(vector<string>& ideas) {
         long long res=0;
-        int n=ideas.size();
         unordered_set<string>ne[26];
         for(int i=0;i<26;i++){
             ne[i].clear();
