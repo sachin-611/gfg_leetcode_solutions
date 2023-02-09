@@ -7,7 +7,7 @@ public:
             ne[str[0]-'a'].insert(str.substr(1));
         }
         for(int i=0;i<26;i++){
-            for(int j=0;j<26;j++){
+            for(int j=i+1;j<26;j++){
                 int cnt=0;
                 for(const string &str:ne[i]){
                     if(ne[j].count(str))
@@ -16,6 +16,6 @@ public:
                 res=res+(ne[i].size()-cnt)*(ne[j].size()-cnt);
             }
         }
-        return res;
+        return res*2;
     }
 };
