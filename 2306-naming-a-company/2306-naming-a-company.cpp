@@ -6,7 +6,7 @@ public:
         for(int i=0;i<26;i++){
             ne[i].clear();
         }
-        for(string &str:ideas){
+        for(const string &str:ideas){
             ne[str[0]-'a'].insert(str.substr(1));
         }
         for(int i=0;i<26;i++){
