@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         vector<vector<int>>res(mat);
-        int n=mat.size(),m=mat[0].size();
+        int n=mat.size(),m=mat[0].size(),level=0,sz;
         queue<pair<int,int>>q;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
@@ -10,7 +10,6 @@ public:
                     q.push({i,j});
             }
         }
-        int level=0,sz;
         pair<int,int>ok;
         while(q.empty()==false){
             sz=q.size();
