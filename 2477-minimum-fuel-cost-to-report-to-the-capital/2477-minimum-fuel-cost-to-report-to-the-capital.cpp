@@ -21,8 +21,8 @@ public:
         for(auto &child:m[node]){
             if(vis[child]==0){
                 int temp=dfs(child);
-                ans+=(temp+seat-1)/seat;  
-                res+=temp;
+                ans=ans + (temp+seat-1)/seat;  
+                res=res + temp;
             }
         }
         return res;
