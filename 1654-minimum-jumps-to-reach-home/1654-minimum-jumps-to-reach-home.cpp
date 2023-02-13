@@ -1,8 +1,6 @@
 class Solution {
 public:
     int minimumJumps(vector<int>& forbidden, int a, int b, int x) {
-        // if(gcd(x,abs(a-b))==1)
-        //     return -1;
         queue<pair<int,int>>q;
         pair<int,int>p;
         q.push({0,1});
