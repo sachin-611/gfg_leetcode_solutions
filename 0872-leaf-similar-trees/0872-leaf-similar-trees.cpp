@@ -10,21 +10,30 @@
  * };
  */
 class Solution {
-    vector<int>tree1,tree2;
-    void dfs(TreeNode*root,int val=1){
+    queue<int>q;
+    bool dfs(TreeNode*root,int val=1){
         if(root==nullptr)
-            return;
-        dfs(root->left,val);
-        dfs(root->right,val);
+            return true;
+        int v1=dfs(root->left,val);
+        if(v1==false)
+            return false;
+        v1=dfs(root->right,val);
+        if(v1==false)
+            return false;
         if(!root->left and !root->right){
-            if(val==1)tree1.push_back(root->val);
-            else tree2.push_back(root->val);
+            if(val==1)q.push(root->val);
+            else {
+                if(q.empty() || q.front()!=root->val){
+                    return false;
+                }
+                q.pop();
+            };
         }
+        return true;
     }
 public:
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
         dfs(root1);
-        dfs(root2,2);
-        return tree1==tree2;
+        return dfs(root2,2) &&  q.empty();
     }
 };
