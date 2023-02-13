@@ -1,10 +1,11 @@
 class Solution {
-    unordered_map<int,vector<int>>m;
+    vector<vector<int>>m;
     long long ans;
     int seat;
     vector<int>vis;
 public:
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
+        m.resize(roads.size()+1);
         for( auto &i:roads){
             m[i[0]].push_back(i[1]);
             m[i[1]].push_back(i[0]);
