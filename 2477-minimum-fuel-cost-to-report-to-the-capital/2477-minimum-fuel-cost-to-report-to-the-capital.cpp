@@ -5,7 +5,6 @@ class Solution {
     vector<int>vis;
 public:
     long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
-        unordered_set<int>cnt;
         for( auto &i:roads){
             m[i[0]].push_back(i[1]);
             m[i[1]].push_back(i[0]);
