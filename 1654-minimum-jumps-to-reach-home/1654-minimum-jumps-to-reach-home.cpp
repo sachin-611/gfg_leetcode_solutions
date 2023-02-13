@@ -19,7 +19,7 @@ public:
                     q.push({p.first-b,0});
                     vis.insert({p.first-b,0});
                 }
-                if(p.first+a<6000 and cnts.count(p.first+a)==0 and vis.count({p.first+a,1})==0){
+                if(p.first+a<5998 and cnts.count(p.first+a)==0 and vis.count({p.first+a,1})==0){
                     q.push({p.first+a,1});
                     vis.insert({p.first+a,1});
                 }
