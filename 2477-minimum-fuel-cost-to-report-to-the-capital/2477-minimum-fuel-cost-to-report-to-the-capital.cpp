@@ -19,7 +19,7 @@ public:
     int dfs(int node){
         vis[node]=1;
         int res=1;
-        for(auto child:m[node]){
+        for(auto &child:m[node]){
             if(vis[child]==0){
                 int temp=dfs(child);
                 ans+=(temp+seat-1)/seat;  
