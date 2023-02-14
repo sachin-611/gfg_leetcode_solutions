@@ -21,7 +21,7 @@ public:
                 p.insert({front[0],front[1]});
                 if(dist[front[0]]==-1)
                     dist[front[0]]=level;
-                for(auto child:graph[front[0]]){
+                for(auto &child:graph[front[0]]){
                     if(child.second!=front[1] and p.count(child)==0){
                         q.push({child.first,child.second});
                     }
