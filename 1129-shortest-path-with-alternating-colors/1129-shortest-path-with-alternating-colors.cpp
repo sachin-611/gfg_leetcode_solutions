@@ -16,8 +16,7 @@ public:
         while(!q.empty()) {
             int sz=q.size();
             for(int i=0;i<sz;i++){
-                auto front = q.front();
-                q.pop();
+                auto &front = q.front();
                 p.insert(front);
                 if(dist[front.first]==-1)
                     dist[front.first]=level;
@@ -26,6 +25,7 @@ public:
                         q.push(child);
                     }
                 }
+                q.pop();
             }
             level++;
         }
