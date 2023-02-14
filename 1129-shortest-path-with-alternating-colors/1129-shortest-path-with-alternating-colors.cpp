@@ -10,21 +10,24 @@ public:
         vector<int> dist(n,-1); 
         
         queue<vector<int>> q;
-        q.emplace(vector<int>{0,0,-1});
-        
+        q.push({0,2});
+        int level=0;
+        set<vector<int>>p;
         while(!q.empty()) {
-            auto front = q.front();
-            q.pop();
-            dist[front[0]] = dist[front[0]] != -1 ? dist[front[0]] : front[1];
-            
-            for(auto &adj : graph[front[0]]) {
-				
-                if(front[2] != adj.second && adj.first!= -1) {
-                    q.emplace(vector<int>{adj.first, front[1] + 1, adj.second});
-					
-                    adj.first = -1;
+            int sz=q.size();
+            for(int i=0;i<sz;i++){
+                auto front = q.front();
+                q.pop();
+                p.insert(front);
+                if(dist[front[0]]==-1)
+                    dist[front[0]]=level;
+                for(auto child:graph[front[0]]){
+                    if(child.second!=front[1] and p.count({child.first,child.second})==0){
+                        q.push({child.first,child.second});
+                    }
                 }
             }
+            level++;
         }
         return dist;
     }
