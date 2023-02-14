@@ -23,7 +23,7 @@ public:
                     dist[front.first]=level;
                 for(auto &child:graph[front.first]){
                     if(child.second!=front.second and p.count(child)==0){
-                        q.push({child.first,child.second});
+                        q.push(child);
                     }
                 }
             }
