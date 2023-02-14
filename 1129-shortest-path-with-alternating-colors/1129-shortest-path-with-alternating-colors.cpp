@@ -12,17 +12,17 @@ public:
         queue<vector<int>> q;
         q.push({0,2});
         int level=0;
-        set<vector<int>>p;
+        set<pair<int,int>>p;
         while(!q.empty()) {
             int sz=q.size();
             for(int i=0;i<sz;i++){
                 auto front = q.front();
                 q.pop();
-                p.insert(front);
+                p.insert({front[0],front[1]});
                 if(dist[front[0]]==-1)
                     dist[front[0]]=level;
                 for(auto child:graph[front[0]]){
-                    if(child.second!=front[1] and p.count({child.first,child.second})==0){
+                    if(child.second!=front[1] and p.count(child)==0){
                         q.push({child.first,child.second});
                     }
                 }
