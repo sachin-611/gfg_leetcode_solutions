@@ -9,7 +9,7 @@ public:
             graph[edge[0]].emplace_back(edge[1],1); 
         vector<int> dist(n,-1); 
         
-        queue<vector<int>> q;
+        queue<pair<int,int>> q;
         q.push({0,2});
         int level=0;
         set<pair<int,int>>p;
@@ -18,11 +18,11 @@ public:
             for(int i=0;i<sz;i++){
                 auto front = q.front();
                 q.pop();
-                p.insert({front[0],front[1]});
-                if(dist[front[0]]==-1)
-                    dist[front[0]]=level;
-                for(auto &child:graph[front[0]]){
-                    if(child.second!=front[1] and p.count(child)==0){
+                p.insert(front);
+                if(dist[front.first]==-1)
+                    dist[front.first]=level;
+                for(auto &child:graph[front.first]){
+                    if(child.second!=front.second and p.count(child)==0){
                         q.push({child.first,child.second});
                     }
                 }
