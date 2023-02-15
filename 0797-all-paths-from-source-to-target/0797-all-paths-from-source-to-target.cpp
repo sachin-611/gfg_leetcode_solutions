@@ -6,7 +6,7 @@ public:
         int n=graph.size();
         q.push({0});
         while(q.empty()==false){
-            auto temp=move(q.front());
+            vector<int> temp=move(q.front());
             q.pop();
             int node=temp.back();
             if(node==n-1){
