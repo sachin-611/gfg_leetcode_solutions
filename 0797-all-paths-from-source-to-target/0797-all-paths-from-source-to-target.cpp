@@ -4,7 +4,6 @@ public:
         vector<vector<int>>res;
         queue<vector<int>>q;
         int n=graph.size();
-        vector<int>vis(n);
         q.push({0});
         while(q.empty()==false){
             auto temp=q.front();
@@ -15,11 +14,9 @@ public:
                 continue;
             }
             for(int child:graph[node]){
-                if(vis[child]==0){
-                    temp.push_back(child);
-                    q.push(temp);
-                    temp.pop_back();
-                }
+                temp.push_back(child);
+                q.push(temp);
+                temp.pop_back();
             }
         }
         return res;
