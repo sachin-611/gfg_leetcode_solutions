@@ -7,7 +7,7 @@ public:
         q.push({0});
         vector<int> temp=q.front();
         while(q.empty()==false){
-            temp=move(q.front());
+            temp=(q.front());
             q.pop();
             int node=temp.back();
             if(node==n-1){
