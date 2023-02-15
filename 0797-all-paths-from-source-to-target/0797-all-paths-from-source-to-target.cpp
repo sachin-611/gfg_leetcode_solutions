@@ -5,8 +5,9 @@ public:
         queue<vector<int>>q;
         int n=graph.size();
         q.push({0});
+        vector<int> temp=q.front();
         while(q.empty()==false){
-            vector<int> temp=move(q.front());
+            temp=move(q.front());
             q.pop();
             int node=temp.back();
             if(node==n-1){
