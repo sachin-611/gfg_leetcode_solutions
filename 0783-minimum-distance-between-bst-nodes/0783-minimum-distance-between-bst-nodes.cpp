@@ -11,26 +11,15 @@
  */
 class Solution {
 public:
+    int last=-1,diff=1000000;
     int minDiffInBST(TreeNode* root) {
-        queue<TreeNode*>q;
-        q.push(root);
-        vector<int>data;
-        while(q.empty()==false){
-            auto node=q.front();
-            data.push_back(node->val);
-            q.pop();
-            if(node->left!=nullptr){
-                q.push(node->left);
-            }
-            if(node->right!=nullptr){
-                q.push(node->right);
-            }
-        }
-        sort(data.begin(),data.end());
-        int n=data.size(),res=1e9;
-        for(int i=1;i<n;i++){
-            res=min(res,data[i]-data[i-1]);
-        }
-        return res;
+        if(root==nullptr)
+            return diff;
+        minDiffInBST(root->left);
+        if(last!=-1)
+        diff=min(diff,root->val-last);
+        last=root->val;
+        minDiffInBST(root->right);
+        return diff;
     }
 };
