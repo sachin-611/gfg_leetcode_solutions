@@ -1,7 +1,8 @@
 class Solution {
 public:
-    int maxDistance(vector<vector<int>>& grid) {
         queue<pair<int,int>>q;
+        pair<int,int>ok;
+    int maxDistance(vector<vector<int>>& grid) {
         int n=grid.size();
         int res=-1;
         for(int i=0;i<n;i++){
@@ -14,7 +15,6 @@ public:
         int sz=q.size();
         if(sz==n*n or sz==0){return -1;}
         int level=0;
-        pair<int,int>ok;
         while(q.empty()==false){
             sz=q.size();
             for(int ii=0;ii<sz;ii++){
