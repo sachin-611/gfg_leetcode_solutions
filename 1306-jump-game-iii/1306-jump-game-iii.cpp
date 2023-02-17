@@ -6,8 +6,7 @@ public:
         const int sz=arr.size();
         vector<int>vis(sz,0);
         while(q.empty()==false){
-            auto front=q.front();
-            q.pop();
+            auto &front=q.front();
             if(arr[front]==0)
                 return true;
             vis[front]=1;
@@ -21,6 +20,7 @@ public:
                     return true;
                 q.push(front+arr[front]);
             }
+            q.pop();
         }
         return false;
     }
