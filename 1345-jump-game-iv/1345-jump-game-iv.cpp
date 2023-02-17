@@ -19,8 +19,8 @@ public:
                     return level;
                 }
                 vis[front]=1;
-                auto &temp=m[arr[front]];
-                for(auto &i:temp){
+                // auto &temp=m[arr[front]];
+                for(auto &i:m[arr[front]]){
                     if(vis[i]==0){
                         q.push(i);
                         vis[i]=1;
