@@ -6,19 +6,20 @@ public:
         const int sz=arr.size();
         vector<int>vis(sz,0);
         while(q.empty()==false){
-            auto &front=q.front();
-            if(arr[front]==0)
+            int &front=q.front();
+            int &val=arr[front];
+            if(val==0)
                 return true;
             vis[front]=1;
-            if(front-arr[front]>=0 and vis[front-arr[front]]==0){
-                if(arr[front-arr[front]]==0)
+            if(front-val>=0 and vis[front-val]==0){
+                if(arr[front-val]==0)
                     return true;
-                q.push(front-arr[front]);
+                q.push(front-val);
             }
-            if(front+arr[front]<sz and vis[front+arr[front]]==0){
-                if(arr[front+arr[front]]==0)
+            if(front+val<sz and vis[front+val]==0){
+                if(arr[front+val]==0)
                     return true;
-                q.push(front+arr[front]);
+                q.push(front+val);
             }
             q.pop();
         }
