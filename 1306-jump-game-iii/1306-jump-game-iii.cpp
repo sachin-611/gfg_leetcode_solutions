@@ -12,9 +12,13 @@ public:
                 return true;
             vis[front]=1;
             if(front-arr[front]>=0 and vis[front-arr[front]]==0){
+                if(arr[front-arr[front]]==0)
+                    return true;
                 q.push(front-arr[front]);
             }
             if(front+arr[front]<sz and vis[front+arr[front]]==0){
+                if(arr[front+arr[front]]==0)
+                    return true;
                 q.push(front+arr[front]);
             }
         }
