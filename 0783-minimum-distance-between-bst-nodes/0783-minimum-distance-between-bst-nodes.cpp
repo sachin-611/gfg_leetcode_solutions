@@ -11,14 +11,15 @@
  */
 class Solution {
 public:
-    int last=-1,diff=1000000;
+    TreeNode* last=nullptr;
+    int diff=1000000;
     int minDiffInBST(TreeNode* root) {
         if(root==nullptr)
             return diff;
         minDiffInBST(root->left);
-        if(last!=-1)
-        diff=min(diff,root->val-last);
-        last=root->val;
+        if(last)
+            diff=min(diff,root->val-last->val);
+        last=root;
         minDiffInBST(root->right);
         return diff;
     }
