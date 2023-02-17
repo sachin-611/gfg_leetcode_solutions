@@ -8,20 +8,18 @@ public:
         while(q.empty()==false){
             int &front=q.front();
             int &val=arr[front];
-            int diff=front-val;
-            int sum=front+val;
             if(val==0)
                 return true;
             vis[front]=1;
-            if(diff>=0 and vis[diff]==0){
-                if(arr[diff]==0)
+            if(front-val>=0 and vis[front-val]==0){
+                if(arr[front-val]==0)
                     return true;
-                q.push(diff);
+                q.push(front-val);
             }
-            if(sum<sz and vis[sum]==0){
-                if(arr[sum]==0)
+            if(front+val<sz and vis[front+val]==0){
+                if(arr[front+val]==0)
                     return true;
-                q.push(sum);
+                q.push(front+val);
             }
             q.pop();
         }
