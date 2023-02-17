@@ -29,14 +29,14 @@ public:
                     }
                 }
                 temp.clear();
+                if(front+1==n-1){
+                    return level+1;
+                }
                 if(front-1>=0 and vis[front-1]==0){
                     q.push(front-1);
                     vis[front-1]=1;
                 }
                 if(front+1<n and vis[front+1]==0){
-                    if(front+1==n-1){
-                        return level+1;
-                    }
                     q.push(front+1);
                     vis[front+1]=1;
                 }
