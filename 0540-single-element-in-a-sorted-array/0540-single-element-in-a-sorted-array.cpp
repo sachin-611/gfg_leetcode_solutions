@@ -1,26 +1,4 @@
 class Solution {
-    int isodd(vector<int>&nums,int &ind,int prev){
-        if(nums[ind]!=nums[ind-1] and nums[ind]!=nums[ind+1]){
-            return 69;
-        }
-        if(nums[ind]==nums[ind-1] ){
-            if(prev%2==0){
-                return -2;
-            }
-            else{
-                return 1;
-            }
-        }
-        if(nums[ind]==nums[ind+1]){
-            if(prev%2==0){
-                return 2;
-            }
-            else{
-                return -1;
-            }
-        }
-        return 2;
-    }
 public:
     int singleNonDuplicate(vector<int>& nums) {
         if(nums.size()==1){
@@ -33,19 +11,28 @@ public:
             return nums[nums.size()-1];
         }
         
-        int low=0,high=nums.size()-1;
+        int low=0,high=nums.size()-1,mid,prev;
         while(low<=high){
-            int mid=(low+high)/2;
-            int val=isodd(nums,mid,mid-low);
-                
-            if(val==69){
+            mid=(low+high)/2;
+            prev=mid-low;
+            if(nums[mid]!=nums[mid-1] and nums[mid]!=nums[mid+1]){
                 return nums[mid];
             }
-            if(val<0){
-                high=mid+val;
+            else if(nums[mid]==nums[mid-1] ){
+                if(prev%2==0){
+                    high=mid-2;
+                }
+                else{
+                    low= mid+1;
+                }
             }
-            else{
-                low=mid+val;
+            else if(nums[mid]==nums[mid+1]){
+                if(prev%2==0){
+                    low= mid+2;
+                }
+                else{
+                    high=mid-1;
+                }
             }
         }
         return -1;
