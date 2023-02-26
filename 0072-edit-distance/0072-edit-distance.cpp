@@ -4,7 +4,7 @@ public:
     int minDistance(string word1, string word2,int i=0,int j=0) {
         int n=word1.size(),m=word2.size();
         if(i==0 and j==0){
-            dp.resize(500,vector<int>(500,-1));
+            dp.resize(n+1,vector<int>(m+1,-1));
         }
         if(i==n){
             return m-j;
