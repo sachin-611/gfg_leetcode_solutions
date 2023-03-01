@@ -27,7 +27,7 @@ public:
         }
         string left=cal(root->left);
         string right=cal(root->right);
-        string cur=" ;"+left+ "; ;"+to_string(root->val)+"; ;"+right+"; ";
+        string cur="("+left+ ")"+to_string(root->val)+"("+right+")";
         if(mp.count(cur) and !used.count(cur)){
             temp.push_back(root);
             used.insert(cur);
