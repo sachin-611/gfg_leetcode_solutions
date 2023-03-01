@@ -10,25 +10,29 @@
  * };
  */
 class Solution {
-    vector<TreeNode *> res;
-    unordered_map<string,int> myMap;
 public:
-    string solve(TreeNode *root){
-        if(!root)
-        return "#";
-
-        string left = solve(root->left);
-        string right = solve(root->right);
-
-        string temp = to_string(root->val) + "," + left + right;
-        myMap[temp]++;
-        if(myMap[temp] == 2)
-        res.push_back(root);
-
+    vector<TreeNode*>temp;
+    unordered_map<string,TreeNode*>mp;
+    unordered_set<string>used;
+    vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
+        temp.clear();
+        mp.clear();
+        used.clear();
+        cal(root);
         return temp;
     }
-    vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
-        solve(root);
-        return res;
+    string cal(TreeNode* root){
+        if(root==nullptr){
+            return "";
+        }
+        string left=cal(root->left);
+        string right=cal(root->right);
+        string cur=" ;"+left+ "; ;"+to_string(root->val)+"; ;"+right+"; ";
+        if(mp.count(cur) and !used.count(cur)){
+            temp.push_back(root);
+            used.insert(cur);
+        }
+        mp[cur]=root;
+        return cur;
     }
 };
