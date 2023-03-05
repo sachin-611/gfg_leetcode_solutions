@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>>dp;
     int mod=1e9+7;
-    long long solve(int i,int n,const vector<vector<int>>&a,int target){
+    long long solve(int i,int n,vector<vector<int>>&a,int target){
         if(target==0){
             return 1;
         }
