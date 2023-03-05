@@ -23,7 +23,7 @@ public:
         return dp[i][target]=res%mod;
     }
     long long waysToReachTarget(int target, vector<vector<int>>& types) {
-        dp.resize(types.size()+5,vector<int>(target+2,-1));
+        dp.resize(types.size(),vector<int>(target+1,-1));
         return solve(0,types.size(),types,target);
     }
 };
