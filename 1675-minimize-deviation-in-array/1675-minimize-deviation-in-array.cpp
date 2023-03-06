@@ -15,7 +15,7 @@ public:
             // cout<<top<<" "<<mini<<" "<<diff<<endl;
             pq.pop();
             diff=min(diff,top-mini);
-            if(top%2==0){
+            if((top&1)==0){
                 pq.push(top>>1);
                 mini=min(mini,top>>1);
             }
