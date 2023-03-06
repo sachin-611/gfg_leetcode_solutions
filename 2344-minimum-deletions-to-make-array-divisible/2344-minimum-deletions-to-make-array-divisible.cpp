@@ -9,6 +9,8 @@ public:
         int cnt=0;
         sort(nums.begin(),nums.end());
         for(int &i:nums){
+            if(i>lc)
+                break;
             if(lc%i==0){
                 return cnt;
             }
