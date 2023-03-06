@@ -16,12 +16,11 @@ public:
         int l=0,r=arr.size()-1;
         int ans=r+1+k;
         while(l<=r){
-            int mid=(l+r)/2;
-            if(arr[mid]-mid-1>=k){
-                ans=mid+k;
-                r=mid-1;
+            if(arr[((l+r)/2)]-((l+r)/2)-1>=k){
+                ans=((l+r)/2)+k;
+                r=((l+r)/2)-1;
             }else{
-                l=mid+1;
+                l=((l+r)/2)+1;
             }
         }
         return ans;
