@@ -6,10 +6,10 @@ struct point{
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        vector<vector<int>>res;
+        vector<vector<int>>res(k);
         make_heap(points.begin(),points.end(),point());
         for(int i=0;i<k;i++){
-            res.push_back(points[0]);
+            res[i]=(points[0]);
             pop_heap(points.begin(),points.end(),point());
             points.pop_back();
         }
