@@ -1,10 +1,6 @@
-int get_distance(const vector<int>&a){
-    return a[0]*a[0]+a[1]*a[1];
-}
-class point{
-    public:
+struct point{
     bool operator()(const vector<int>&a,const vector<int>&b){
-        return get_distance(a)>get_distance(b);
+        return a[0]*a[0]+a[1]*a[1]>b[0]*b[0]+b[1]*b[1];
     }
 };
 class Solution {
