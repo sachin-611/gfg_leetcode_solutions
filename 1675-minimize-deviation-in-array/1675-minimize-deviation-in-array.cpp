@@ -1,19 +1,30 @@
 class Solution {
 public:
     int minimumDeviation(vector<int>& nums) {
-    int res = INT_MAX, min_n = INT_MAX;
-    priority_queue<int> pq;
-    for (auto n : nums) {
-        n = n % 2 ? n * 2 : n;
-        pq.push(n);
-        min_n = min(min_n, n); 
+        priority_queue<int>pq;
+        int mini=nums[0]*2,diff=1e9+5,ans=-1;
+        for(auto i:nums){
+            if(i%2){
+                i*=2;
+            }
+            pq.push(i);
+            // cout<<i<<" ";
+            mini=min(mini,i);
+        }
+        while(pq.empty()==false){
+            int top=pq.top();
+            // cout<<top<<" "<<mini<<" "<<diff<<endl;
+            pq.pop();
+            diff=min(diff,top-mini);
+            if(top%2==0){
+                pq.push(top/2);
+                mini=min(mini,top/2);
+            }
+            if(top%2){
+                pq.push(top);
+                break;
+            }
+        }
+        return min(diff,pq.top()-mini);
     }
-    while (pq.top() % 2 == 0) {
-        res = min(res, pq.top() - min_n);
-        min_n = min(min_n, pq.top() / 2);
-        pq.push(pq.top() / 2);
-        pq.pop();
-    }
-    return min(res, pq.top() - min_n);
-}
 };
