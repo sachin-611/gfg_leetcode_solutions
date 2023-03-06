@@ -5,7 +5,7 @@ public:
         for(int i=0;i<numsDivide.size();i++){
             lc=__gcd(lc,numsDivide[i]);
         }
-        cout<<lc<<endl;
+        // cout<<lc<<endl;
         int cnt=0;
         sort(nums.begin(),nums.end());
         for(int &i:nums){
