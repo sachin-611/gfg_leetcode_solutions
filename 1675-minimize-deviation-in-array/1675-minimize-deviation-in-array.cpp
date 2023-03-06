@@ -4,11 +4,10 @@ public:
         priority_queue<int>pq;
         int mini=INT_MAX,diff=INT_MAX;
         for(auto i:nums){
-            if(i%2){
-                i*=2;
+            if(i&1){
+                i=i<<1;
             }
             pq.push(i);
-            // cout<<i<<" ";
             mini=min(mini,i);
         }
         while(pq.empty()==false){
@@ -17,10 +16,10 @@ public:
             pq.pop();
             diff=min(diff,top-mini);
             if(top%2==0){
-                pq.push(top/2);
-                mini=min(mini,top/2);
+                pq.push(top>>1);
+                mini=min(mini,top>>1);
             }
-            if(top%2){
+            if(top&1){
                 pq.push(top);
                 break;
             }
