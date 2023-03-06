@@ -2,7 +2,7 @@ class Solution {
 public:
     int minimumDeviation(vector<int>& nums) {
         priority_queue<int>pq;
-        int mini=INT_MAX,diff=INT_MAX,ans=-1;
+        int mini=INT_MAX,diff=INT_MAX;
         for(auto i:nums){
             if(i%2){
                 i*=2;
