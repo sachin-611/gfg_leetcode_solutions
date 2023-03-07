@@ -1,8 +1,8 @@
 class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        int left=*max_element(weights.begin(),weights.end()),right=1e8;
-        int ans=-1,n=weights.size();
+        int ans=-1,n=weights.size(),left=*max_element(weights.begin(),weights.end());
+        int right=n*left;
         while(left<=right){
             int mid=(right-left)/2+left;
             int dat=0;
