@@ -2,7 +2,7 @@ class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
         int ans=-1,n=weights.size(),left=0, right=0;
-        for(auto &i:weights){
+        for(auto i:weights){
             left=max(left,i);
             right+=i;
         }
