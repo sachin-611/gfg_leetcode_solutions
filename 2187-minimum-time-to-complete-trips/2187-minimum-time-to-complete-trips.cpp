@@ -2,10 +2,10 @@ class Solution {
 public:
     long long minimumTime(vector<int>& time, int totalTrips) {
         long long res=0;
-        long long left=1,right=1e14+890;
+        long long left=1,right=1e15;
         while(left<=right){
             long long mid=(right-left)/2+left;
-            long long cnt=0;
+            unsigned long long cnt=0;
             for(auto i:time){
                 cnt+=mid/i;
             }
