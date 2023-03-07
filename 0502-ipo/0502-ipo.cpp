@@ -1,10 +1,10 @@
 class Solution {
 public:
     int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) {
-        vector<pair<int,int>>a;
         int n=profits.size(),j=0;
+        vector<pair<int,int>>a(n);
         for(int i=0;i<n;i++){
-            a.emplace_back(capital[i],profits[i]);
+            a[i]={capital[i],profits[i]};
         }
         sort(a.begin(),a.end());
         priority_queue<int>p;
