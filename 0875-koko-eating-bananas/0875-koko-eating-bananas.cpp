@@ -2,7 +2,7 @@ class Solution {
 public:
     long long minEatingSpeed(vector<int>& piles, int h) {
         long long left=1,right=1e16;
-        long long res;  
+        int res;  
         while(left<=right){
             long long mid=left+(right-left)/2;
             int hrs=0;
