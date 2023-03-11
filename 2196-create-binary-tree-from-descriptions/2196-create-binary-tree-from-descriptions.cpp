@@ -15,25 +15,27 @@ public:
         unordered_set<int>ok;
         unordered_map<int,TreeNode*>m;
         TreeNode* par,*child;
+        int a,b,c;
         for(vector<int>&i:descriptions){
-            if(!m.count(i[0])){
-                par=new TreeNode(i[0]);
-                m[i[0]]=par;
+            a=i[0],b=i[1],c=i[2];
+            if(!m.count(a)){
+                par=new TreeNode(a);
+                m[a]=par;
             }else{
-                par=m[i[0]];
+                par=m[a];
             }
-            if(!m.count(i[1])){
-                child=new TreeNode(i[1]);   
-                m[i[1]]=child;
+            if(!m.count(b)){
+                child=new TreeNode(b);   
+                m[b]=child;
             }else{
-                child=m[i[1]];
+                child=m[b];
             }
-            if(i[2]){
+            if(c){
                 par->left=child;
             }else{
                 par->right=child;
             }
-            ok.insert(child->val);
+            ok.insert(b);
         }
         for(vector<int>&i:descriptions){
             if(!ok.count(i[0])){
