@@ -10,8 +10,17 @@ public:
         cur->data=homepage;
         cur->next=cur->prev=nullptr;
     }
-    
+    void deletes(node* point){
+        while(point){
+            auto temp=point->next;
+            delete(point);
+            // i/f(temp){
+                point=temp;
+            // }
+        }
+    }
     void visit(string url) {
+        delete(cur->next);
         cur->next=new node();
         cur->next->prev=cur;
         cur=cur->next;
