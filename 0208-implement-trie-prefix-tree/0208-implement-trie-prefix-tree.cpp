@@ -1,40 +1,27 @@
 class Trie {
 public:
-    Trie() {}
-
+    unordered_set<string>s,h;
+    Trie() {
+        s.clear();
+        h.clear();
+    }
+    
     void insert(string word) {
-        Trie* node = this;
-        for (char ch : word) {
-            ch -= 'a';
-            if (!node->next[ch]) { node->next[ch] = new Trie(); }
-            node = node->next[ch];
+        h.insert(word);
+        string temp="";
+        for(auto &ch : word){
+            temp.push_back(ch);
+            s.insert(temp);
         }
-        node->isword = true;
     }
-
+    
     bool search(string word) {
-        Trie* node = this;
-        for (char ch : word) {
-            ch -= 'a';
-            if (!node->next[ch]) { return false; }
-            node = node->next[ch];
-        }
-        return node->isword;
+        return h.count(word);
     }
-
+    
     bool startsWith(string prefix) {
-        Trie* node = this;
-        for (char ch : prefix) {
-            ch -= 'a';
-            if (!node->next[ch]) { return false; }
-            node = node->next[ch];
-        }
-        return true;
+        return s.count(prefix);
     }
-
-private:
-    Trie* next[26] = {};
-    bool isword = false;
 };
 
 /**
