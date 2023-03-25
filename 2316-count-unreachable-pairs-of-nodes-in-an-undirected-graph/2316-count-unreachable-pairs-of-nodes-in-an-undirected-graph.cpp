@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long countPairs(int n, vector<vector<int>>& edges) {
-        vector<int>vis(n);
+        vector<int>vis(n,1);
         vector<vector<int>>g(n);
         for(auto &i:edges){
             g[i[0]].push_back(i[1]);
@@ -9,19 +9,20 @@ public:
         }
         int tot=n;
         long long res=0;
-        for(int i=0;i<n;i++){
             int sz=0;
-            if(vis[i]==0){
+        for(int i=0;i<n;i++){
+            if(vis[i]){
+                sz=0;
                 queue<int>q;
                 q.push(i);
-                vis[i]=1;
-                while(q.empty()==false){
-                    sz++;
+                vis[i]=0;
+                while(!q.empty()){
+                    ++sz;
                     int temp=q.front();
                     q.pop();
-                    for(int child:g[temp]){
-                        if(vis[child]==0){
-                            vis[child]=1;
+                    for(int &child:g[temp]){
+                        if(vis[child]){
+                            vis[child]=0;
                             q.push(child);
                         }
                     }
