@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long countPairs(int n, vector<vector<int>>& edges) {
-        vector<int>vis(n,1);
+        vector<bool>vis(n,1);
         vector<vector<int>>g(n);
         for(auto &i:edges){
             g[i[0]].emplace_back(i[1]);
