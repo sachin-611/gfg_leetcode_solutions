@@ -29,9 +29,6 @@ public:
                 }
             }
         }
-        // if(connec==1){
-        //     return -1;
-        // }
         return connec-1;
     }
 };
