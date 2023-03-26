@@ -1,31 +1,37 @@
 class Solution {
-private:
-    void dfs(vector<vector<int>> &adj, vector<bool> &visited, int src)
-    {
-        visited[src] = true;
-        for(int i : adj[src])
-            if(!visited[i])
-                dfs(adj, visited, i);
-    }
 public:
     int makeConnected(int n, vector<vector<int>>& connections) {
-        
-        if(connections.size() < n - 1)
+        if(connections.size()<n-1){
             return -1;
-        vector<vector<int>> adj(n);
-        for(auto v : connections)
-        {
-            adj[v[0]].push_back(v[1]);
-            adj[v[1]].push_back(v[0]);
         }
-        vector<bool> visited(n, false);
-        int components = 0;
-        for(int i=0; i<n; i++)
-            if(!visited[i])
-            {
-                dfs(adj, visited, i);
-                components++;
+        vector<vector<int>>ok(n);
+        vector<bool>vis(n);
+        for(auto i:connections){
+            ok[i[0]].emplace_back(i[1]);
+            ok[i[1]].emplace_back(i[0]);
+        }
+        int connec=0;
+        queue<int>q;
+        for(int i=0;i<n;i++){
+            if(!vis[i]){
+                vis[i]=1;
+                connec++;
+                q.push(i);
+                while(!q.empty()){
+                    auto temp=q.front();
+                    q.pop();
+                    for(auto j:ok[temp]){
+                        if(!vis[j]){
+                            vis[j]=1;
+                            q.push(j);
+                        }
+                    }
+                }
             }
-        return components - 1;
+        }
+        // if(connec==1){
+        //     return -1;
+        // }
+        return connec-1;
     }
 };
