@@ -1,12 +1,12 @@
 class Solution {
 public:
-    vector<vector<int>>dp;
+    vector<int>dp;
     int res(int i,int n,int next,vector<int>&days,vector<int>&costs){
         if(i==n){
             return 0;
         }
-        if(dp[i][next]!=-1){
-            return dp[i][next];
+        if(dp[next]!=-1){
+            return dp[next];
         }
         int cost=1e9;
         if(days[i]>=next){
@@ -16,10 +16,10 @@ public:
         }else{
             cost=res(i+1,n,next,days,costs);
         }
-        return dp[i][next]=cost;
+        return dp[next]=cost;
     }
     int mincostTickets(vector<int>& days, vector<int>& costs) {
-        dp.resize(366,vector<int>(500,-1));
+        dp.resize(500,-1);
         return res(0,days.size(),0,days,costs);
     }
 };
