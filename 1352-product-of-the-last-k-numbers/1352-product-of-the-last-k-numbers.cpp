@@ -3,7 +3,7 @@ public:
     int *a;
     int n;
     ProductOfNumbers() {
-        a=new int[100000];
+        a=new int[40000];
         n=0;
     }
     
