@@ -3,14 +3,14 @@ public:
     vector<vector<int>>g;
     vector<int>vis;
     vector<int>fvis;
-    vector<unordered_map<int,int>>oks;
+    vector<map<int,int>>oks;
     string col;
     int res=-1;
     int finala;
     void cal(int node){
         vis[node]=1;
         fvis[node]=1;
-        unordered_map<int,int>m;
+        map<int,int>m;
             for(int &i:g[node]){
                 if(vis[i]==0){
                     if(!fvis[i]){
