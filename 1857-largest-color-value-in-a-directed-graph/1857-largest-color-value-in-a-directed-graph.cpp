@@ -3,52 +3,57 @@ public:
     vector<vector<int>>g;
     vector<int>vis;
     vector<int>fvis;
-    vector<map<int,int>>oks;
+    vector<vector<int>>oks;
     string col;
     int res=-1;
     int finala;
+    
     void cal(int node){
         vis[node]=1;
         fvis[node]=1;
-        map<int,int>m;
+        auto &m=oks[node];
             for(int &i:g[node]){
                 if(vis[i]==0){
                     if(!fvis[i]){
                         cal(i);
                     }
+                    int cnt=0;
                     for(auto &jk:oks[i]){
-                        m[jk.first]=max(jk.second,m[jk.first]);
+                        m[cnt]=max(jk,m[cnt]);
+                        cnt++;
                     }
                 }else{
                     finala=-1;
                 }
+                if(finala==-1){
+                    return;
+                }
             }
-        m[col[node]]++;
+        m[col[node]-'a']++;
         for(auto &i:m){
-            res=max(res,i.second);
+            res=max(res,i);
         }
-        oks[node]=m;
         vis[node]=0;
     }
+    
     int largestPathValue(string colors, vector<vector<int>>& edges) {
         if(edges.empty()){
             return 1;
         }
+        
         finala=1;
         g.resize(colors.size());
-        oks.resize(colors.size());
+        oks.resize(colors.size(),vector<int>(26,0));
         vis.resize(colors.size());
         fvis.resize(colors.size());
         col=colors;
+        
         for(auto &i:edges){
-            // if(i[0]!=i[1]){
-                g[i[0]].push_back(i[1]);
-            // }
+            g[i[0]].push_back(i[1]);
         }
         
         for(int i=0;i<colors.size();i++){
             if(fvis[i]==0){
-                unordered_map<int,int>m;
                 cal(i);
             }
         }
