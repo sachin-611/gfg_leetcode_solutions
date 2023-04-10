@@ -7,39 +7,28 @@ public:
     string col;
     int res=-1;
     int finala;
-    unordered_map<int,int> cal(int node){
+    void cal(int node){
         vis[node]=1;
         fvis[node]=1;
         unordered_map<int,int>m;
             for(int &i:g[node]){
                 if(vis[i]==0){
                     if(!fvis[i]){
-                        
-                        auto tems=cal(i);
-                        for(auto jk : tems){
-                            m[jk.first]=max(jk.second,m[jk.first]);
-                        }
+                        cal(i);
                     }
-                    else{
-                        auto tem=oks[i];
-                        for(auto jk:tem){
-                            m[jk.first]=max(jk.second,m[jk.first]);
-                        }
+                    for(auto &jk:oks[i]){
+                        m[jk.first]=max(jk.second,m[jk.first]);
                     }
                 }else{
                     finala=-1;
                 }
             }
         m[col[node]]++;
-        //     cout<<"for node:"<<node<<endl;
         for(auto &i:m){
-            // cout<<char(i.first)<<" "<<i.second<<endl;;
             res=max(res,i.second);
         }
-        // cout<<endl;
         oks[node]=m;
         vis[node]=0;
-        return m;
     }
     int largestPathValue(string colors, vector<vector<int>>& edges) {
         if(edges.empty()){
