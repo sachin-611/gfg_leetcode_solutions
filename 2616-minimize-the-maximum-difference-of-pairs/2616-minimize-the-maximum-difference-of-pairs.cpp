@@ -1,13 +1,12 @@
 class Solution {
 public:
     int minimizeMax(vector<int>& num, int p) {
-       int res,n=num.size();
         sort(num.begin(),num.end());
-        int l=0,h=num[n-1]-num[0];
+       int res,n=num.size(),i,l=0,h=num[num.size()-1]-num[0],cnt,mid;
         while(l<=h){
-            int mid=((h-l)>>1) + l;
-            int cnt=0;
-            for(int i=1;i<n;i++){
+            mid=((h-l)>>1) + l;
+            cnt=0;
+            for(i=1;i<n;++i){
                 if(num[i]-num[i-1]<=mid)
                     cnt++,i++;
             }
