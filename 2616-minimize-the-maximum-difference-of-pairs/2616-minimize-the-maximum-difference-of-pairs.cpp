@@ -5,7 +5,7 @@ public:
         sort(num.begin(),num.end());
         int l=0,h=num[n-1]-num[0];
         while(l<=h){
-            int mid=(h-l)/2 + l;
+            int mid=((h-l)>>1) + l;
             int cnt=0;
             for(int i=1;i<n;i++){
                 if(num[i]-num[i-1]<=mid)
