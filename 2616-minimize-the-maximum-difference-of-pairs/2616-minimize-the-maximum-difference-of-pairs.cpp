@@ -2,7 +2,7 @@ class Solution {
 public:
     int minimizeMax(vector<int>& num, int p) {
         sort(num.begin(),num.end());
-       int res,n=num.size(),i,l=0,h=num[num.size()-1]-num[0],cnt,mid;
+        int res,n=num.size(),i,l=0,h=num[num.size()-1]-num[0],cnt,mid;
         while(l<=h){
             mid=((h-l)>>1) + l;
             cnt=0;
