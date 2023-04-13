@@ -5,7 +5,7 @@ public:
         vector<int>used(1001,0);
         int i=0,j=0,n=pu.size();
         while(j<n){
-            while(i<n and !used[po[j]]){
+            while(!used[po[j]]){
                 s.push(pu[i]);
                 used[pu[i]]++;
                 i++;
