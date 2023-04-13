@@ -2,7 +2,7 @@ class Solution {
 public:
     bool validateStackSequences(vector<int>& pu, vector<int>& po) {
         stack<int>s;
-        unordered_set<int>used;
+        set<int>used;
         int i=0,j=0,n=pu.size();
         while(j<n){
             while(!used.count(po[j])){
