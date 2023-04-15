@@ -17,7 +17,6 @@ public:
         }
         int cnt=0;
         int total=0;
-        res=maxValueOfCoins(piles,k,i+1);
         for(int &j:piles[i]){
             cnt++;
             total+=j;
@@ -27,6 +26,7 @@ public:
                 break;
             }
         }
+        res=max(res,maxValueOfCoins(piles,k,i+1));
         return res;
     }
 };
