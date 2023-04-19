@@ -14,9 +14,9 @@ public:
     // unordered_map<TreeNode*,int>left,right;
     int res;
     int longestZigZag(TreeNode* root,int left=0,int right=0) {
-        if(root==nullptr)
+        if(!root)
             return 0;
-        if(left==0 and right==0){
+        if(!left && !right){
             res=0;
         }
         if(res<left)
