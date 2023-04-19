@@ -12,27 +12,20 @@
 class Solution {
 public:
     int res;
-    map<TreeNode*,int>left,right;
-    int solve(TreeNode* root){
+    unordered_map<TreeNode*,int>left,right;
+    int longestZigZag(TreeNode* root) {
         if(root==nullptr)
             return 0;
         auto &lef=left[root];
         auto &righ=right[root];
-        res=max(res,solve(root->left));
-        res=max(solve(root->right),res);
+        int p1=longestZigZag(root->left);
+        int p2=longestZigZag(root->right);
         if(root->left){
             lef=right[root->left]+1;
         }
         if(root->right){
             righ=left[root->right]+1;
         }
-        return res=max({res,lef,righ});
-    }
-    int longestZigZag(TreeNode* root) {
-        res=0;
-        left.clear();
-        right.clear();
-        solve(root);
-        return res;
+        return max({p1,p2,lef,righ});
     }
 };
