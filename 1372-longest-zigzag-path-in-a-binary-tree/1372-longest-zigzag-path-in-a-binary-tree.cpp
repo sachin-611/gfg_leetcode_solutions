@@ -13,13 +13,11 @@ class Solution {
 public:
     // unordered_map<TreeNode*,int>left,right;
     int res=0;
-    int longestZigZag(TreeNode* root,int left=-1,int right=-1) {
+    int longestZigZag(TreeNode* root,int left=0,int right=0) {
         if(root==nullptr)
             return 0;
-        if(left==-1 and right==-1){
+        if(left==0 and right==0){
             res=0;
-            left=right=res;
-            // cout<<" sad"<<endl;
         }
         res=max({res,left,right});
         if(root->left){
