@@ -20,12 +20,8 @@ public:
             res=0;
         }
         res=max({res,left,right});
-        if(root->left){
-            longestZigZag(root->left,right+1,0);
-        }
-        if(root->right){
-            longestZigZag(root->right,0,left+1);
-        }
+        longestZigZag(root->left,right+1,0);
+        longestZigZag(root->right,0,left+1);
         return res;
     }
 };
