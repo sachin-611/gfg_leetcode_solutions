@@ -11,21 +11,23 @@
  */
 class Solution {
 public:
-    int res;
-    unordered_map<TreeNode*,int>left,right;
-    int longestZigZag(TreeNode* root) {
+    // unordered_map<TreeNode*,int>left,right;
+    int res=0;
+    int longestZigZag(TreeNode* root,int left=-1,int right=-1) {
         if(root==nullptr)
             return 0;
-        auto &lef=left[root];
-        auto &righ=right[root];
-        int p1=longestZigZag(root->left);
-        int p2=longestZigZag(root->right);
+        if(left==-1 and right==-1){
+            res=0;
+            left=right=res;
+            // cout<<" sad"<<endl;
+        }
+        res=max({res,left,right});
         if(root->left){
-            lef=right[root->left]+1;
+            longestZigZag(root->left,right+1,0);
         }
         if(root->right){
-            righ=left[root->right]+1;
+            longestZigZag(root->right,0,left+1);
         }
-        return max({p1,p2,lef,righ});
+        return res;
     }
 };
