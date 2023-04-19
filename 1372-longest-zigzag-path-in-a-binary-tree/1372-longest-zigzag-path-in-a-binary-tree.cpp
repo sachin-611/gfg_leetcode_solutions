@@ -18,8 +18,6 @@ public:
             return 0;
         auto &lef=left[root];
         auto &righ=right[root];
-        lef=0;
-        righ=0;
         res=max(res,solve(root->left));
         res=max(solve(root->right),res);
         if(root->left){
