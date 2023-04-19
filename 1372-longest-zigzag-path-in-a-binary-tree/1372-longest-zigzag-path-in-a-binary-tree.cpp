@@ -19,7 +19,10 @@ public:
         if(left==0 and right==0){
             res=0;
         }
-        res=max({res,left,right});
+        if(res<left)
+            res=left;
+        if(res<right)
+            res=right;
         longestZigZag(root->left,right+1,0);
         longestZigZag(root->right,0,left+1);
         return res;
