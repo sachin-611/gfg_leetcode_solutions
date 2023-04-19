@@ -12,7 +12,7 @@
 class Solution {
 public:
     int res;
-    unordered_map<TreeNode*,int>left,right;
+    map<TreeNode*,int>left,right;
     int solve(TreeNode* root){
         if(root==nullptr)
             return 0;
