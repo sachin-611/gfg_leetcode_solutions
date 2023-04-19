@@ -16,9 +16,8 @@ public:
     int longestZigZag(TreeNode* root,int left=0,int right=0) {
         if(!root)
             return 0;
-        if(!left && !right){
+        if(!left && !right)
             res=0;
-        }
         if(res<left)
             res=left;
         if(res<right)
