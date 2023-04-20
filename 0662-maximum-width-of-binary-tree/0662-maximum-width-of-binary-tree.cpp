@@ -14,7 +14,7 @@ public:
     int widthOfBinaryTree(TreeNode* root) {
         int res=0;
         queue<pair<TreeNode*,int>>q;
-        q.push({root,1});
+        q.push({root,0});
         int cnt=0;
         while(!q.empty()){
             int sz=q.size();
