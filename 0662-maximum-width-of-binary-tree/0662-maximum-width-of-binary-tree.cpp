@@ -11,14 +11,14 @@
  */
 class Solution {
 public:
-    unsigned long long widthOfBinaryTree(TreeNode* root) {
-        unsigned long long res=0;
-        queue<pair<TreeNode*,unsigned long long>>q;
+    int widthOfBinaryTree(TreeNode* root) {
+        int res=0;
+        queue<pair<TreeNode*,int>>q;
         q.push({root,0});
         int cnt=0;
         while(!q.empty()){
             int sz=q.size();
-            unsigned long long sec=-1,fir=-1;
+            int sec=-1,fir=-1;
             while(sz--){
                 auto temp=q.front();
                 q.pop();
@@ -27,9 +27,9 @@ public:
                 }
                 sec=temp.second;
                 if(temp.first->left)
-                q.push({temp.first->left,temp.second*2});
+                q.push({temp.first->left,(long long)temp.second*2+1});
                 if(temp.first->right)
-                q.push({temp.first->right,temp.second*2+1});
+                q.push({temp.first->right,(long long)temp.second*2+2});
             }
             res=max(res,(sec-fir+1));
         }
