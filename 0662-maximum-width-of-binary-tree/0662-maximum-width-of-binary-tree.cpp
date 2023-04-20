@@ -27,9 +27,9 @@ public:
                 }
                 sec=temp.second;
                 if(temp.first->left)
-                q.push({temp.first->left,(long long)temp.second*2+1});
+                q.push({temp.first->left,(long long)(temp.second-fir)*2+1});
                 if(temp.first->right)
-                q.push({temp.first->right,(long long)temp.second*2+2});
+                q.push({temp.first->right,(long long)(temp.second-fir)*2+2});
             }
             res=max(res,(sec-fir+1));
         }
