@@ -1,10 +1,10 @@
 class Solution {
 public:
-    vector<int>dp;
+     int dp[100004];
     int mod=1000000007;
     int numberOfArrays(string &s, int k,int i=0) {
         if(i==0){
-            dp.resize(s.size(),-1);
+            memset(dp,-1,sizeof(dp));
         }
         if(i==s.size())
             return 1;
