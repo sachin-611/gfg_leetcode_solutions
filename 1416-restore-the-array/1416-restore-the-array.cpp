@@ -2,7 +2,7 @@ class Solution {
 public:
      int dp[100004];
     int mod=1000000007;
-    int numberOfArrays(string &s, int k,int i=0) {
+    int numberOfArrays(string &s, int &k,int i=0) {
         if(i==0){
             memset(dp,-1,sizeof(dp));
         }
