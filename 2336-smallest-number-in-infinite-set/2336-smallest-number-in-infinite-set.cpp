@@ -13,8 +13,7 @@ public:
             s.erase(s.begin());
             return val;
         }else{
-            cnt++;
-            return cnt-1;
+            return cnt++;
         }
     }
     
