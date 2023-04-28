@@ -56,7 +56,7 @@ public:
     }
     int flipLights(int n, int presses) {
         int num=0;
-        bit=min(n,10);
+        bit=min(n,7);
         presses=min(4,presses);
         for(int i=1;i<=bit;i++){
             num=num|(1<<(i-1));
