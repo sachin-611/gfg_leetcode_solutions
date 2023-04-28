@@ -15,7 +15,7 @@ class Solution {
     }
     void dfs(int ind){
         ok[ind]=1;
-        for(int ch:g[ind]){
+        for(int &ch:g[ind]){
             if(ok[ch]==0){
                 dfs(ch);
             }
