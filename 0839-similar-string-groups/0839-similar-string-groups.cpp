@@ -27,7 +27,7 @@ public:
         g.resize(n);
         ok.resize(n);
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
+            for(int j=i+1;j<n;j++){
                 if(i!=j and pos(strs[i],strs[j])){
                     g[i].push_back(j);
                     g[j].push_back(i);
