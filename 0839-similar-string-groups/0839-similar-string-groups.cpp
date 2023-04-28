@@ -1,7 +1,7 @@
 class Solution {
     map<string,vector<string>>g;
-    map<string,int>ok;
-    bool pos(string s,string o){
+    unordered_map<string,int>ok;
+    bool pos(string &s,string &o){
         vector<int>ok;
         for(int i=0;i<s.size();i++){
             if(s[i]!=o[i]){
@@ -9,8 +9,7 @@ class Solution {
             }
         }
         if(ok.size()==2){
-            swap(s[ok[0]],s[ok[1]]);
-            return s==o;
+            return s[ok[1]]==o[ok[0]];
         }
         return 0;
     }
