@@ -12,7 +12,7 @@ class Solution {
 public:
     int numSimilarGroups(vector<string>& strs) {
         int n=strs.size();
-        vector<vector<int>>g(n);
+        map<int,vector<int>>g;
         vector<int>ok(n);
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
