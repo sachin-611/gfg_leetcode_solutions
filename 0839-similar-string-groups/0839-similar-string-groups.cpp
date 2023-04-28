@@ -1,6 +1,4 @@
 class Solution {
-    vector<vector<int>>g;
-    vector<int>ok;
     bool pos(string &s,string &o){
         int cnt=0;
         for(int i=0;i<s.size();i++){
@@ -14,8 +12,8 @@ class Solution {
 public:
     int numSimilarGroups(vector<string>& strs) {
         int n=strs.size();
-        g.resize(n);
-        ok.resize(n);
+        vector<vector<int>>g(n);
+        vector<int>ok(n);
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
                 if(pos(strs[i],strs[j])){
