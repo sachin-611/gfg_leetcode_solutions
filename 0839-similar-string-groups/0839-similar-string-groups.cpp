@@ -1,6 +1,6 @@
 class Solution {
-    map<string,vector<string>>g;
-    unordered_map<string,int>ok;
+    vector<vector<int>>g;
+    vector<int>ok;
     bool pos(string &s,string &o){
         vector<int>ok;
         for(int i=0;i<s.size();i++){
@@ -11,12 +11,12 @@ class Solution {
         if(ok.size()==2){
             return s[ok[1]]==o[ok[0]];
         }
-        return 0;
+        return ok.empty();
     }
-    void dfs(string s){
-        ok[s]=1;
-        for(string ch:g[s]){
-            if(ok.count(ch)==0){
+    void dfs(int ind){
+        ok[ind]=1;
+        for(int ch:g[ind]){
+            if(ok[ch]==0){
                 dfs(ch);
             }
         }
@@ -24,18 +24,20 @@ class Solution {
 public:
     int numSimilarGroups(vector<string>& strs) {
         int n=strs.size();
+        g.resize(n);
+        ok.resize(n);
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 if(i!=j and pos(strs[i],strs[j])){
-                    g[strs[i]].push_back(strs[j]);
-                    g[strs[j]].push_back(strs[i]);
+                    g[i].push_back(j);
+                    g[j].push_back(i);
                 }
             }
         }
         int count=0;
         for(int i=0;i<n;i++){
-            if(ok.count(strs[i])==0){
-                dfs(strs[i]);
+            if(ok[i]==0){
+                dfs(i);
                 count++;
             }
         }
