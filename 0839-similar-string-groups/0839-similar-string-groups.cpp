@@ -27,7 +27,7 @@ public:
         int count=0;
                 int top;
         for(int i=0;i<n;i++){
-            if(ok[i]==0){
+            if(!ok[i]){
                 count++;
                 queue<int>q;
                 q.push(i);
@@ -36,7 +36,7 @@ public:
                     ok[top]=1;
                     q.pop();
                     for(int &chi:g[top]){
-                        if(ok[chi]==0){
+                        if(!ok[chi]){
                             q.push(chi);
                         }
                     }
