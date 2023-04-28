@@ -13,14 +13,7 @@ class Solution {
         }
         return ok.empty();
     }
-    void dfs(int ind){
-        ok[ind]=1;
-        for(int &ch:g[ind]){
-            if(ok[ch]==0){
-                dfs(ch);
-            }
-        }
-    }
+    
 public:
     int numSimilarGroups(vector<string>& strs) {
         int n=strs.size();
@@ -35,10 +28,22 @@ public:
             }
         }
         int count=0;
+                int top;
         for(int i=0;i<n;i++){
             if(ok[i]==0){
-                dfs(i);
                 count++;
+                queue<int>q;
+                q.push(i);
+                while(q.empty()==false){
+                    top=q.front();
+                    ok[top]=1;
+                    q.pop();
+                    for(int &chi:g[top]){
+                        if(ok[chi]==0){
+                            q.push(chi);
+                        }
+                    }
+                }
             }
         }
         return count;
