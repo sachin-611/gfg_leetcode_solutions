@@ -2,16 +2,13 @@ class Solution {
     vector<vector<int>>g;
     vector<int>ok;
     bool pos(string &s,string &o){
-        vector<int>ok;
+        int cnt=0;
         for(int i=0;i<s.size();i++){
             if(s[i]!=o[i]){
-                ok.push_back(i);
+                cnt++;
             }
         }
-        if(ok.size()==2){
-            return s[ok[1]]==o[ok[0]];
-        }
-        return ok.empty();
+        return cnt==0 or cnt==2;
     }
     
 public:
