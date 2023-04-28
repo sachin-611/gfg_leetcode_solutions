@@ -14,8 +14,8 @@ public:
         int n=strs.size();
         map<int,vector<int>>g;
         vector<int>ok(n);
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
+        for(int i=0;i<n;++i){
+            for(int j=i+1;j<n;++j){
                 if(pos(strs[i],strs[j])){
                     g[i].push_back(j);
                     g[j].push_back(i);
