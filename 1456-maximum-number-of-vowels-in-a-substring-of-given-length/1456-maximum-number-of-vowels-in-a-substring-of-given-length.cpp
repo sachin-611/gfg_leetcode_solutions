@@ -8,7 +8,7 @@ public:
         for(int i=0;i<s.length();i++){
             if(check(s[i]))
                 cur++;
-            if(i-k>=0 and check(s[i-k]))
+            if(i-k>=0 && check(s[i-k]))
                 cur--;
             res=max(res,cur);
         }
