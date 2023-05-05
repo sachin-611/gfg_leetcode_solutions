@@ -1,7 +1,7 @@
 class Solution {
 public:
     inline bool check(char &s){
-        return (s=='a' || s=='e' || s=='i' || s=='o' || s=='u');
+        return (s=='a' or s=='e' or s=='i' or s=='o' or s=='u');
     }
     int maxVowels(string s, int k) {
         int res=0,cur=0;
