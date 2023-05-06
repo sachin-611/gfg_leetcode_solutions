@@ -1,17 +1,25 @@
 class Solution {
 public:
         int mod=1e9+7;
-    int numSubseq(vector<int>& a, int tar) {
-        vector<int>pre={1};
-        for(int i=1;i<a.size();i++){
-            pre.push_back((pre.back()<<1)%mod);
+    long long bin(int b){
+        long long res=1;
+        long long a=2;
+        while(b){
+            if(b%2){
+                res=(res*a)%mod;
+            }
+            b/=2;
+            a=(a*a)%mod;
         }
+        return res;
+    }
+    long long numSubseq(vector<int>& a, int tar) {
         sort(a.begin(),a.end());
-        int res=0;
+        long long res=0;
         int l=0,h=a.size()-1;
         while(l<=h){
             if(a[l]+a[h]<=tar){
-                res=(res+pre[(h-l)])%mod;
+                res=(res+bin(h-l))%mod;
                 l++;
             }else{
                 h--;
