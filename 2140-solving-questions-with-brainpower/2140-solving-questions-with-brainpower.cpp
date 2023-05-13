@@ -11,6 +11,6 @@ public:
             return 0;
         if(dp[i]!=-1)
             return dp[i];
-        return dp[i]=max(mostPoints(q,i+1),mostPoints(q,i+q[i][1]+1)+q[i][0]);;
+        return dp[i]=max(mostPoints(q,i+1),mostPoints(q,i+q[i][1]+1)+q[i][0]);
     }
 };
