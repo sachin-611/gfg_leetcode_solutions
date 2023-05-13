@@ -1,11 +1,11 @@
 class Solution {
 public:
-    vector<long long>dp;
+    long long dp[100005];
         int n;
     long long mostPoints(vector<vector<int>>& q,int i=0) {
         if(i==0){
             n=q.size();
-            dp.resize(n,-1);
+            memset(dp,-1,sizeof(long long)*n);
         }
         if(i>=n){
             return 0;
