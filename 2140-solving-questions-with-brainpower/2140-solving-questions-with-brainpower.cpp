@@ -7,13 +7,15 @@ public:
             n=q.size();
             dp.resize(n,-1);
         }
-        if(i>=n)
+        if(i>=n){
             return 0;
+        }
         long long &res=dp[i];
-        if(res!=-1)
+        if(res!=-1){
             return res;
-            res=mostPoints(q,i+1);
-            res=max(res,mostPoints(q,i+q[i][1]+1)+q[i][0]);
+        }
+        res=mostPoints(q,i+1);
+        res=max(res,mostPoints(q,i+q[i][1]+1)+q[i][0]);
         return res;
     }
 };
