@@ -6,7 +6,7 @@ public:
     int solve(int rem,int vis,int i,vector<int>&a){
         if(rem==0)
             return 0;
-        int &score=dp[rem][vis];
+        int &score=dp[0][vis];
         if(score!=-1)
             return score;
         score=0;
