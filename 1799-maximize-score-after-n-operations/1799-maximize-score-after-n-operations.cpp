@@ -1,12 +1,12 @@
 class Solution {
 public:
     vector<vector<int>>gcd;
-    vector<vector<int>>dp;
+    vector<int>dp;
     int n;
     int solve(int rem,int vis,int i,vector<int>&a){
         if(rem==0)
             return 0;
-        int &score=dp[0][vis];
+        int &score=dp[vis];
         if(score!=-1)
             return score;
         score=0;
@@ -27,7 +27,7 @@ public:
     int maxScore(vector<int>& nums) {
         n=nums.size();
         gcd.resize(n,vector<int>(n));
-        dp.resize(n,vector<int>((1<<15),-1));
+        dp.resize((1<<15),-1);
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
                 gcd[i][j]=__gcd(nums[i],nums[j]);
