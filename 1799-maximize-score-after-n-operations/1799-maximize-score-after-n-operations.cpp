@@ -3,8 +3,8 @@ public:
     vector<vector<int>>gcd;
     vector<int>dp;
     int n;
-    int solve(int rem,int vis,int i,vector<int>&a){
-        if(rem==0)
+    int solve(int vis,int i,vector<int>&a){
+        if(i==0)
             return 0;
         int &score=dp[vis];
         if(score!=-1)
@@ -16,7 +16,7 @@ public:
                     (vis^=(1<<j));
                     (vis^=(1<<k));
                     // vis[k]=0;
-                    score=max(score,solve(rem-1,vis,i+1,a)+i*(gcd[j][k]));
+                    score=max(score,solve(vis,i+1,a)+i*(gcd[j][k]));
                     (vis^=(1<<j));
                     (vis^=(1<<k));
                 }
@@ -34,6 +34,6 @@ public:
             }
         }
         int vis=(1<<15)-1;
-        return solve(n/2,vis,1,nums);
+        return solve(vis,1,nums);
     }
 };
