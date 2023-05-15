@@ -10,15 +10,38 @@
  */
 class Solution {
 public:
-    ListNode* swapNodes(ListNode* head, int k) {
-        vector<ListNode*>ok;
-        ListNode*a=head;
-        for(;a!=nullptr;a=a->next){
-                ok.push_back(a);
+    ListNode* reverse(ListNode*head){
+        ListNode*nhead=head;
+        head=head->next;
+        nhead->next=nullptr;
+        while(head){
+            auto temp=head;
+            head=head->next;
+            temp->next=nhead;
+            nhead=temp;
         }
-        int l=(k-1)%ok.size();
-        int r=(ok.size()-k+ok.size())%ok.size();
-        swap(ok[l]->val,ok[r]->val);
-        return head;
+        return nhead;
+    }
+    ListNode* swapNodes(ListNode* head, int k) {
+        int total=0;
+        for(auto temp=head;temp;temp=temp->next)
+            total++;
+        if(k>=total)
+        k=k%total+1;
+        cout<<k<<endl;
+        auto ok1=head,ok2=head;
+        auto tem=head;
+        for(int i=0;i<k;i++){
+            ok1=tem;
+            tem=tem->next;
+        }
+        head=reverse(head);
+        tem=head;
+        for(int i=0;i<k;i++){
+            ok2=tem;
+            tem=tem->next;
+        }
+        swap(ok1->val,ok2->val);
+        return reverse(head);
     }
 };
