@@ -10,32 +10,20 @@
  */
 class Solution {
 public:
-    ListNode* reverse(ListNode*head){
-        ListNode*nhead=head;
-        head=head->next;
-        nhead->next=nullptr;
-        while(head){
-            auto temp=head;
-            head=head->next;
-            temp->next=nhead;
-            nhead=temp;
-        }
-        return nhead;
-    }
     ListNode* swapNodes(ListNode* head, int k) {
-        auto ok1=head,ok2=head;
-        auto tem=head;
-        for(int i=0;i<k;i++){
-            ok1=tem;
-            tem=tem->next;
+        auto temp=head,left=head,right=head;
+        int cnt=1;
+        while(temp){
+            if(cnt<k){
+                left=left->next;
+            }
+            else if(cnt>k){
+                right=right->next;
+            }
+            cnt++;
+            temp=temp->next;
         }
-        head=reverse(head);
-        tem=head;
-        for(int i=0;i<k;i++){
-            ok2=tem;
-            tem=tem->next;
-        }
-        swap(ok1->val,ok2->val);
-        return reverse(head);
+        swap(left->val,right->val);
+        return head;
     }
 };
