@@ -23,12 +23,6 @@ public:
         return nhead;
     }
     ListNode* swapNodes(ListNode* head, int k) {
-        int total=0;
-        for(auto temp=head;temp;temp=temp->next)
-            total++;
-        if(k>=total)
-        k=k%total+1;
-        cout<<k<<endl;
         auto ok1=head,ok2=head;
         auto tem=head;
         for(int i=0;i<k;i++){
