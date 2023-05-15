@@ -20,7 +20,7 @@ public:
             l+=(k-1);
             r-=(k-1);
             l%=ok.size();
-            r=(r+ok.size()*1000)%ok.size();
+            r=(r+ok.size()*100)%ok.size();
             // if(l<r)
             swap(ok[l]->val,ok[r]->val);
         return head;
