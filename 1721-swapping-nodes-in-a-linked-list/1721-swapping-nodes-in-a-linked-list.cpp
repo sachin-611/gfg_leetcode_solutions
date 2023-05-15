@@ -16,13 +16,9 @@ public:
         for(;a!=nullptr;a=a->next){
                 ok.push_back(a);
         }
-        int l=0,r=ok.size()-1;
-            l+=(k-1);
-            r-=(k-1);
-            l%=ok.size();
-            r=(r+ok.size())%ok.size();
-            // if(l<r)
-            swap(ok[l]->val,ok[r]->val);
+        int l=(k-1)%ok.size();
+        int r=(ok.size()-k+ok.size())%ok.size();
+        swap(ok[l]->val,ok[r]->val);
         return head;
     }
 };
