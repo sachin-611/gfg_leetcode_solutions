@@ -18,8 +18,7 @@ public:
         queue<pair<int,int>>fq;
         fq.push({r,c});
         while(fq.empty()==false){
-            auto front=fq.front();
-            fq.pop();
+            auto &front=fq.front();
             q.push({front.first,front.second,0});
             grid[front.first][front.second]=3;
             if(front.first-1>=0 and grid[front.first-1][front.second]==1){
@@ -38,11 +37,11 @@ public:
                 fq.push({front.first,front.second+1});
                 grid[front.first][front.second+1]=2;
             }
+            fq.pop();
         }
         int level=0;
         while(q.empty()==false){
-                auto front=q.front();
-                q.pop();
+                auto &front=q.front();
                 int i=front[0],j=front[1];
                 if((has(i-1,j) and grid[i-1][j]==1) or (has(i+1,j) and grid[i+1][j]==1) or (has(i,j-1) and grid[i][j-1]==1) or (has(i,j+1) and grid[i][j+1]==1)){
                     return front[2];
@@ -63,6 +62,7 @@ public:
                     q.push({i,j+1,front[2]+1});
                     grid[i][j+1]=2;
                 }
+                q.pop();
         }
         return level;
     }
