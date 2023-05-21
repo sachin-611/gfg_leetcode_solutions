@@ -66,7 +66,7 @@ public:
         }
         return level;
     }
-    bool has(int i,int j){
+    inline bool has(int i,int j){
         return (i>=0 and j>=0 and j<m and i<n) ;
     }
 };
