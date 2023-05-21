@@ -40,11 +40,7 @@ public:
             }
         }
         int level=0;
-        // cout<<q.size()<<endl;;
         while(q.empty()==false){
-            int sz=q.size();
-            level++;
-            for(int k=0;k<sz;k++){
                 auto front=q.front();
                 q.pop();
                 int i=front[0],j=front[1];
@@ -67,7 +63,6 @@ public:
                     q.push({i,j+1,front[2]+1});
                     grid[i][j+1]=2;
                 }
-            }
         }
         return level;
     }
