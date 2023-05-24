@@ -5,8 +5,6 @@ public:
         stack<int> s;
         s.push(0);
         int n=heights.size();
-        if(n==1)
-            return heights[0];
         vector<int>l(n,-1),r(n,-1);
         for(int i=1;i<n;i++){
             while(s.empty()==false and heights[s.top()]>=heights[i]){
