@@ -1,7 +1,7 @@
 class Solution {
 public:
     int n;
-    bool pos(int x,int y){
+    inline bool pos(int x,int y){
         return (x>=0 and y>=0 and x<n and y<n);
     }
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
