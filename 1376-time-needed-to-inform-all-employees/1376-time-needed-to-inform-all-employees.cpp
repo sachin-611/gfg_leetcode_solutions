@@ -13,7 +13,7 @@ public:
             auto temp=q.front();
             q.pop();
             ans=max(ans,temp.second);
-            for(auto child:adj[temp.first]){
+            for(auto &child:adj[temp.first]){
                 q.push({child,temp.second+informTime[child]});
             }
         }
