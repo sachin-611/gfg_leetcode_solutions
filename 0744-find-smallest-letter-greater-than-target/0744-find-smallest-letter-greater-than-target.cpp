@@ -3,7 +3,7 @@ public:
     char nextGreatestLetter(vector<char>& letters, char target) {
         int res=0,l=0,h=letters.size()-1;
         while(l<=h){
-            int mid=(h-l)/2+l;
+            int mid=(h+l)>>1;
             if(letters[mid]>target){
                 res=mid;
                 h=mid-1;
