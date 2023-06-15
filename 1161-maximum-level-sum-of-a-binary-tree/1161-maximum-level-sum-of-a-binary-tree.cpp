@@ -22,8 +22,7 @@ public:
             int n=q.size();
             int sm=0;
             for(int i=0;i<n;i++){
-                auto fr=q.front();
-                q.pop();
+                auto &fr=q.front();
                 sm+=fr->val;
                 if(fr->left){
                     q.push(fr->left);
@@ -31,8 +30,8 @@ public:
                 if(fr->right){
                     q.push(fr->right);
                 }
+                q.pop();
             }
-            
             if(total<sm){
                 ans=level;
                 total=sm;
