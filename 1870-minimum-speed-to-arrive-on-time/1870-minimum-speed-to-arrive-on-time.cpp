@@ -1,19 +1,19 @@
 class Solution {
 public:
     bool pos(vector<int>&a,double time,int speed ){
-        double times=0;
+        double ok=0;
         for(int i=0;i<a.size();i++){
             if(i+1<a.size()){
-                times+=((a[i]+speed-1)/speed);
+                ok+=((a[i]+speed-1)/speed);
             }else{
-                times+=(a[i]/(double)speed);
+                ok+=(a[i]/(double)speed);
             }
         }
-        return time>=times;
+        return time>=ok;
     }
     int minSpeedOnTime(vector<int>& dist, double hour) {
         int ans=-1;
-        int low=1,high=10000000;
+        int low=1,high=1e9;
         while(low<=high){
             long int mid=(high+low)/2;
             if(pos(dist,hour,mid)){
