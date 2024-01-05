@@ -17,7 +17,6 @@ public:
                 ans+=i.second/3-1;
                 ans+=2;
             }
-            // cout<<i.first<<" "<<i.second<< " "<<ans-cnt<<endl;;
         }
         return ans;
     }
