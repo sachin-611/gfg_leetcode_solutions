@@ -10,22 +10,18 @@
  * };
  */
 class Solution {
+    int ans=0;
+    void solve(TreeNode* root,int maxi,int mini){
+        if(root==nullptr)
+            return;
+        ans=max({ans,abs(maxi-root->val),abs(root->val-mini)});
+        solve(root->left,max(maxi,root->val),min(mini,root->val));
+        solve(root->right,max(maxi,root->val),min(mini,root->val));
+    }
 public:
     int maxAncestorDiff(TreeNode* root) {
-        return dfs(root, root->val, root->val);
-    }
-
-    int dfs(TreeNode* node, int minVal, int maxVal) {
-        if (node == nullptr) {
-            return maxVal - minVal;
-        }
-
-        minVal = min(minVal, node->val);
-        maxVal = max(maxVal, node->val);
-
-        int leftDiff = dfs(node->left, minVal, maxVal);
-        int rightDiff = dfs(node->right, minVal, maxVal);
-
-        return max(leftDiff, rightDiff);
+        ans=0;
+        solve(root, root->val, root->val);
+        return ans; 
     }
 };
