@@ -7,11 +7,11 @@ public:
             m[t[i]]--;
         }
         int ans=0;
-        for(auto i:m){
-            if(i.second>0){
+        for(auto &i:m){
+            if(i.second<0){
                 ans+=i.second;
             }
         }
-        return ans;
+        return -ans;
     }
 };
